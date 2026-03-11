@@ -1,0 +1,38 @@
+<div class="paper-block">
+    <slot />
+</div>
+
+<style lang="scss">
+    .paper-block {
+        --paper-margin-width: 1.5rem;
+
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        min-height: 5rem;
+
+        padding-left: calc(var(--paper-margin-width) + 0.2rem);
+
+        border-image-source: url("/assets/page-decals.png");
+        border-image-slice: 0 0 0 72;
+        border-image-repeat: space;
+        border-image-width: var(--paper-margin-width);
+        border-radius: 0.25rem;
+
+        background-color: #f2f7fb;
+
+        box-shadow: var(--shadow-large);
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: var(--paper-margin-width);
+
+            width: 0.2rem;
+            height: 100%;
+
+            background-color: #fcb9b9;
+        }
+    }
+</style>

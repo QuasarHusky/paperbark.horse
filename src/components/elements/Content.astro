@@ -1,0 +1,95 @@
+---
+interface Props {
+    theme?: "default" | "paper";
+    style?: string;
+}
+
+const { theme = "default", style } = Astro.props;
+---
+
+<div class="content" {style} class:list={[`theme-${theme}`]}>
+    <slot />
+</div>
+
+<style>
+    .content {
+        --content-gap: 1.25em;
+
+        display: flex;
+        flex-direction: column;
+
+        > * + * {
+            margin-top: var(--content-gap);
+        }
+
+        > h1,
+        > h2,
+        > h3,
+        > h4,
+        > h5,
+        > h6 {
+            font-weight: var(--font-semibold);
+            line-height: 1.2;
+        }
+
+        > h1 {
+            font-size: 3rem;
+        }
+
+        > h2 {
+            font-size: 2rem;
+        }
+
+        > h3 {
+            font-size: 1.5rem;
+        }
+
+        > h4 {
+            font-size: 1.25rem;
+        }
+
+        > p.subheading {
+            --content-gap: 0;
+            font-weight: var(--font-medium);
+
+            b,
+            strong {
+                font-weight: var(--font-bold);
+            }
+        }
+
+        > p {
+            i,
+            em {
+                font-style: italic;
+            }
+
+            b,
+            strong {
+                font-weight: var(--font-semibold);
+            }
+        }
+    }
+
+    .content.theme-paper {
+        > p a {
+            background-color: #f9e380;
+            mix-blend-mode: multiply;
+
+            border-top-left-radius: 1.8em 0.6em;
+            border-bottom-left-radius: 1em 0.9em;
+            border-top-right-radius: 0.9em 1em;
+            border-bottom-right-radius: 1.8em 0.6em;
+            box-decoration-break: clone;
+
+            padding-inline: 0.2em;
+            margin-inline: -0.2em;
+            padding-block: 0.05em;
+            margin-block: -0.05em;
+
+            &[target="_blank"] {
+                background-color: #baf980;
+            }
+        }
+    }
+</style>

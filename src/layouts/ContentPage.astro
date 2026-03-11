@@ -1,0 +1,37 @@
+---
+import Page from "./Page.astro";
+
+interface Props {
+    title: string;
+}
+
+let { title } = Astro.props;
+---
+
+<Page {title}>
+    <main class="page-content">
+        <slot />
+    </main>
+</Page>
+
+<style lang="scss">
+    body {
+        display: flex;
+        flex-direction: column;
+
+        background-image: url("/assets/carpet-overlay.png"), linear-gradient(45deg, #2c4e9c, #2668b0);
+        background-size: 40rem, auto;
+        background-repeat: repeat, no-repeat;
+        background-blend-mode: overlay, normal;
+        background-attachment: scroll, fixed;
+    }
+
+    .page-content {
+        display: flex;
+        flex-direction: column;
+
+        flex-grow: 1;
+
+        margin-bottom: 5rem;
+    }
+</style>

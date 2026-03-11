@@ -1,0 +1,75 @@
+---
+import ContentPage from "$layouts/ContentPage.astro";
+import PaperBlock from "$components/containers/PaperBlock.astro";
+import Content from "$components/elements/Content.astro";
+import Polaroid from "$components/elements/Polaroid.astro";
+---
+
+<ContentPage title="Playground">
+    <div
+        style="display: flex; flex-direction: column; width: 100%; max-width: 65ch; margin: 0 auto; padding: 1rem; gap: 2rem;"
+    >
+        <PaperBlock>
+            <div style="padding: 1rem">
+                <Content theme="paper">
+                    <h1>Content</h1>
+                    <p>
+                        Placeholder images from <a href="https://placedog.net/" target="_blank"
+                            >placedog.net</a
+                        >
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet <a href="#">consectetur adipisicing</a> elit. Autem alias magni
+                        culpa id illo exercitationem corrupti deserunt, sint
+                        <a href="#">necessitatibus quam itaque</a> a, ut velit consequatur ab cupiditate nemo esse?
+                        Neque!
+                    </p>
+                    <br />
+                </Content>
+            </div>
+        </PaperBlock>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 1rem;">
+            <Polaroid src="https://placedog.net/250?id=1" width="100%" />
+            <Polaroid src="https://placedog.net/250?id=2" width="100%" />
+            <Polaroid src="https://placedog.net/250?id=3" width="100%" />
+            <Polaroid src="https://placedog.net/250?id=4" width="100%" />
+            <Polaroid src="https://placedog.net/250?id=5" width="100%" />
+            <Polaroid src="https://placedog.net/250?id=6" width="100%" />
+            <Polaroid src="https://placedog.net/250?id=7" width="100%" />
+            <Polaroid src="https://placedog.net/250?id=8" width="100%" />
+            <Polaroid src="https://placedog.net/250?id=9" width="100%" />
+        </div>
+        <PaperBlock>
+            <div style="padding: 1rem">
+                <Content>
+                    <h1>My OCs</h1>
+                </Content>
+            </div>
+            <div
+                style="display: grid; grid-template-columns: 1fr 3fr; gap: 1.5rem 2rem; padding: 1rem; align-items: center;"
+            >
+                <div style="rotate: -4deg;">
+                    <Polaroid src="/Paperbark Boop.png" width="100%" />
+                </div>
+                <Content style="--content-gap: 0.2em;">
+                    <h2>Paperbark</h2>
+                    <p>Archivist pony and lore keeper.</p>
+                </Content>
+                <div style="rotate: 2deg;">
+                    <Polaroid src="/Cocoa Butter OC.png" width="100%" />
+                </div>
+                <Content style="--content-gap: 0.2em;">
+                    <h2>Cocoa Butter</h2>
+                    <p>Huh..? Huh..?</p>
+                </Content>
+                <div style="rotate: -1deg;">
+                    <Polaroid src="/QuasarHusky Icon.png" width="100%" />
+                </div>
+                <Content style="--content-gap: 0.2em;">
+                    <h2>Quasar</h2>
+                    <p>What the dog doin?</p>
+                </Content>
+            </div>
+        </PaperBlock>
+    </div>
+</ContentPage>
