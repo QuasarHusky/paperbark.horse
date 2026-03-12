@@ -1,6 +1,7 @@
 ---
 import StickyNote from "$components/containers/StickyNote.astro";
 import Polaroid from "$components/elements/Polaroid.astro";
+import Tagline from "./Tagline.astro";
 ---
 
 <div class="site-banner">
@@ -11,11 +12,7 @@ import Polaroid from "$components/elements/Polaroid.astro";
     </div>
     <div class="right">
         <img src="/assets/paperbark-title.svg" alt="Paperbark" class="title" />
-        <div class="tagline">
-            <StickyNote padding={false}>
-                <p class="tagline-text">You can make it if you try<br />with a hop, skip, and jump!</p>
-            </StickyNote>
-        </div>
+        <Tagline />
     </div>
 </div>
 
@@ -42,7 +39,7 @@ import Polaroid from "$components/elements/Polaroid.astro";
     squeeAltAudio.preservesPitch = false;
 
     if (boopTarget) {
-        boopTarget.onclick = boop;
+        boopTarget.addEventListener("click", boop);
     }
 
     function boop() {
@@ -144,13 +141,6 @@ import Polaroid from "$components/elements/Polaroid.astro";
         .title {
             width: 100%;
             filter: var(--filter-shadow-medium);
-        }
-
-        .tagline {
-            .tagline-text {
-                padding: 1rem 2.5rem;
-                font-weight: var(--font-medium);
-            }
         }
     }
 
