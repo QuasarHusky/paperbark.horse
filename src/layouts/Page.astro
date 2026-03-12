@@ -5,9 +5,10 @@ import Skeleton from "./Skeleton.astro";
 interface Props {
     title: string;
     navigation?: boolean;
+    footer?: boolean;
 }
 
-let { title, navigation = true } = Astro.props;
+let { title, navigation = true, footer = true } = Astro.props;
 ---
 
 <Skeleton {title} bodyClass="background-carpet">
@@ -23,9 +24,15 @@ let { title, navigation = true } = Astro.props;
     <main class="page-content">
         <slot />
     </main>
+    {footer && <footer class="page-footer"></footer>}
 </Skeleton>
 
 <style lang="scss">
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
     .page-content {
         display: flex;
         flex-direction: column;
@@ -41,5 +48,9 @@ let { title, navigation = true } = Astro.props;
         align-self: center;
 
         padding: 2rem;
+    }
+
+    .page-footer {
+        margin-top: 8rem;
     }
 </style>
