@@ -367,5 +367,9 @@
     "81": {
         "type": "quote",
         "text": "Peter, the horse is here!"
+    },
+    "82": {
+        "type": "text",
+        "text": "Designed responsively!"
     }
 }
