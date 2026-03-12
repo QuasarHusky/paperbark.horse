@@ -1,5 +1,6 @@
 ---
 import PaperBlock from "$components/containers/PaperBlock.astro";
+import Blinkie from "$components/elements/Blinkie.astro";
 import Content from "$components/elements/Content.astro";
 import SimpleLayout from "$components/layouts/SimpleLayout.astro";
 import Page from "$layouts/Page.astro";
@@ -9,55 +10,93 @@ import Page from "$layouts/Page.astro";
     <SimpleLayout>
         <PaperBlock>
             <Content theme="paper">
+                <!-- TODO: Fix spacing -->
                 <h2>Blinkies</h2>
+                <br />
             </Content>
             <div class="blinkies-grid">
                 <div class="blinkie-grid">
-                    <img src="/blinkies/blinkies/fluttershy.gif" alt="Fluttershy" />
-                    <img src="/blinkies/blinkies/rainbow-dash.gif" alt="Rainbow Dash" />
-                    <img src="/blinkies/blinkies/pinkie-pie.gif" alt="Pinkie Pie" />
-                    <img src="/blinkies/blinkies/applejack.gif" alt="Applejack" />
-                    <img src="/blinkies/blinkies/rarity.gif" alt="Rarity" />
-                    <img src="/blinkies/blinkies/twilight-sparkle.gif" alt="Twilight Sparkle" />
-                    <img src="/blinkies/blinkies/asexual-pride.gif" alt="Asexual Pride" />
-                    <img
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/fluttershy.gif" alt="Fluttershy" />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/rainbow-dash.gif" alt="Rainbow Dash" />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/pinkie-pie.gif" alt="Pinkie Pie" />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/applejack.gif" alt="Applejack" />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/rarity.gif" alt="Rarity" />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/twilight-sparkle.gif"
+                        alt="Twilight Sparkle"
+                    />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/asexual-pride.gif" alt="Asexual Pride" />
+                    <Blinkie
+                        type="blinkie"
                         src="/blinkies/blinkies/i-love-my-trans-friends.gif"
                         alt="I love my trans friends!"
                     />
-                    <img src="/blinkies/blinkies/mp3-lover.gif" alt="mp3 lover" />
-                    <img src="/blinkies/blinkies/cya-later-alligator.gif" alt="Cya Later Alligator" />
-                    <img src="/blinkies/blinkies/i-heart-pizza-hut.gif" alt="I Heart Pizza Hut" />
-                    <img src="/blinkies/blinkies/pizza-time.gif" alt="Pizza Time!!" />
-                    <img src="/blinkies/blinkies/minecraft.gif" alt="Minecraft" />
-                    <img src="/blinkies/blinkies/minecraft-vegetarian.gif" alt="Minecraft Vegetarian" />
-                    <img src="/blinkies/blinkies/i-love-snow.gif" alt="I love SNOW!!!!" />
-                    <img src="/blinkies/blinkies/smiling-friends.gif" alt="Smiling Friends" />
-                    <img src="/blinkies/blinkies/glep.gif" alt="Glep" />
-                    <img
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/mp3-lover.gif" alt="mp3 lover" />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/cya-later-alligator.gif"
+                        alt="Cya Later Alligator"
+                    />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/i-heart-pizza-hut.gif"
+                        alt="I Heart Pizza Hut"
+                    />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/pizza-time.gif" alt="Pizza Time!!" />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/minecraft.gif" alt="Minecraft" />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/minecraft-vegetarian.gif"
+                        alt="Minecraft Vegetarian"
+                    />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/i-love-snow.gif" alt="I love SNOW!!!!" />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/smiling-friends.gif"
+                        alt="Smiling Friends"
+                    />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/glep.gif" alt="Glep" />
+                    <Blinkie
+                        type="blinkie"
                         src="/blinkies/blinkies/pinkie-pie-smile-smile-smile.gif"
                         alt="Pinkie Pie: Smile! Smile! Smile!"
                     />
-                    <img src="/blinkies/blinkies/jerma985.gif" alt="Jerma985" />
-                    <a
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/jerma985.gif" alt="Jerma985" />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/mouse-bites.gif"
+                        alt="He needs mouse bites to live"
                         href="https://www.youtube.com/watch?v=ry-Z6_yfZoE"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <img src="/blinkies/blinkies/mouse-bites.gif" alt="He needs mouse bites to live" />
-                    </a>
-                    <img src="/blinkies/blinkies/portal.gif" alt="Portal" />
-                    <img src="/blinkies/blinkies/portal-2.gif" alt="Portal 2" />
-                    <img src="/blinkies/blinkies/stardew-valley.gif" alt="Stardew Valley" />
-                    <img src="/blinkies/blinkies/terraria-player.gif" alt="Terraria Player" />
-                    <img src="/blinkies/blinkies/the-sims-3.gif" alt="The Sims 3" />
-                    <a href="https://en.wikipedia.org" target="_blank" rel="noopener noreferrer">
-                        <img src="/blinkies/blinkies/wikipedia.gif" alt="Wikipedia" />
-                    </a>
-                    <a href="https://www.blender.org/" target="_blank" rel="noopener noreferrer">
-                        <img src="/blinkies/blinkies/blender-scares-me.gif" alt="Blender scares me" />
-                    </a>
-                    <img src="/blinkies/blinkies/potassium.gif" alt="Potassium" />
-                    <img
+                    />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/portal.gif" alt="Portal" />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/portal-2.gif" alt="Portal 2" />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/stardew-valley.gif"
+                        alt="Stardew Valley"
+                    />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/terraria-player.gif"
+                        alt="Terraria Player"
+                    />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/the-sims-3.gif" alt="The Sims 3" />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/wikipedia.gif"
+                        alt="Wikipedia"
+                        href="https://en.wikipedia.org"
+                    />
+                    <Blinkie
+                        type="blinkie"
+                        src="/blinkies/blinkies/blender-scares-me.gif"
+                        alt="Blender scares me"
+                        href="https://www.blender.org/"
+                    />
+                    <Blinkie type="blinkie" src="/blinkies/blinkies/potassium.gif" alt="Potassium" />
+                    <Blinkie
+                        type="blinkie"
                         src="/blinkies/blinkies/despite-everything.gif"
                         alt="Despite everything... it's still you"
                     />
@@ -67,134 +106,216 @@ import Page from "$layouts/Page.astro";
 
         <PaperBlock>
             <Content theme="paper">
+                <!-- TODO: Fix spacing -->
                 <h2>Stamps</h2>
+                <br />
             </Content>
             <div class="stamps-grid">
-                <img src="/blinkies/stamps/vinyl-scratch.png" alt="Vinyl Scratch" />
-                <img src="/blinkies/stamps/dj-pon3.gif" alt="Vinyl Scratch" />
-                <img src="/blinkies/stamps/everypony-best-pony.gif" alt="Everypony is best pony" />
-                <img src="/blinkies/stamps/mlp-mane-six.gif" alt="My Little Pony Mane Six" />
-                <img src="/blinkies/stamps/mlp-generosity.gif" alt="Generosity" />
-                <img src="/blinkies/stamps/mlp-honesty.gif" alt="Honesty" />
-                <img src="/blinkies/stamps/mlp-laughter.gif" alt="Laughter" />
-                <img src="/blinkies/stamps/mlp-loyalty.gif" alt="Loyalty" />
-                <img src="/blinkies/stamps/fluttershy-yay.webp" alt="Fluttershy yay" />
-                <img src="/blinkies/stamps/fluttershy-bop.gif" alt="Fluttershy bop" />
-                <img src="/blinkies/stamps/rainbow-dash-dealwithit.png" alt="Rainbow Dash: Deal with it" />
-                <img src="/blinkies/stamps/rainbow-dash.png" alt="Rainbow Dash Sleeping" />
-                <img src="/blinkies/stamps/applejack.gif" alt="Applejack" />
-                <img src="/blinkies/stamps/derpy.png" alt="Derpy" />
-                <img src="/blinkies/stamps/rd-aj-hoof-bump.gif" alt="Rainbow & AJ hoof bump" />
-                <img src="/blinkies/stamps/twipie-boop.gif" alt="Twipie boop" />
-                <img src="/blinkies/stamps/startrix.png" alt="Trixie and Starlight Glimmer" />
-                <img
+                <Blinkie type="stamp" src="/blinkies/stamps/vinyl-scratch.png" alt="Vinyl Scratch" />
+                <Blinkie type="stamp" src="/blinkies/stamps/dj-pon3.gif" alt="Vinyl Scratch" />
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/everypony-best-pony.gif"
+                    alt="Everypony is best pony"
+                />
+                <Blinkie type="stamp" src="/blinkies/stamps/mlp-mane-six.gif" alt="My Little Pony Mane Six" />
+                <Blinkie type="stamp" src="/blinkies/stamps/mlp-generosity.gif" alt="Generosity" />
+                <Blinkie type="stamp" src="/blinkies/stamps/mlp-honesty.gif" alt="Honesty" />
+                <Blinkie type="stamp" src="/blinkies/stamps/mlp-laughter.gif" alt="Laughter" />
+                <Blinkie type="stamp" src="/blinkies/stamps/mlp-loyalty.gif" alt="Loyalty" />
+                <Blinkie type="stamp" src="/blinkies/stamps/fluttershy-yay.webp" alt="Fluttershy yay" />
+                <Blinkie type="stamp" src="/blinkies/stamps/fluttershy-bop.gif" alt="Fluttershy bop" />
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/rainbow-dash-dealwithit.png"
+                    alt="Rainbow Dash: Deal with it"
+                />
+                <Blinkie type="stamp" src="/blinkies/stamps/rainbow-dash.png" alt="Rainbow Dash Sleeping" />
+                <Blinkie type="stamp" src="/blinkies/stamps/applejack.gif" alt="Applejack" />
+                <Blinkie type="stamp" src="/blinkies/stamps/derpy.png" alt="Derpy" />
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/rd-aj-hoof-bump.gif"
+                    alt="Rainbow & AJ hoof bump"
+                />
+                <Blinkie type="stamp" src="/blinkies/stamps/twipie-boop.gif" alt="Twipie boop" />
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/startrix.png"
+                    alt="Trixie and Starlight Glimmer"
+                />
+                <Blinkie
+                    type="stamp"
                     src="/blinkies/stamps/pinkie-cross-my-heart.gif"
                     alt="Cross my heart and hope to fly, stick a cupcake in my eye"
                 />
-                <img src="/blinkies/stamps/young-luna.png" alt="Luna" />
-                <img src="/blinkies/stamps/mlp-fim-intro.gif" alt="My Little Pony Friendship is Magic" />
-                <img src="/blinkies/stamps/my-little-pony.gif" alt="My Little Pony" />
-                <a
+                <Blinkie type="stamp" src="/blinkies/stamps/young-luna.png" alt="Luna" />
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/mlp-fim-intro.gif"
+                    alt="My Little Pony Friendship is Magic"
+                />
+                <Blinkie type="stamp" src="/blinkies/stamps/my-little-pony.gif" alt="My Little Pony" />
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/antonymph.gif"
+                    alt="Antonymph"
                     href="https://www.youtube.com/watch?v=CNPdO5TZ1DQ"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img src="/blinkies/stamps/antonymph.gif" alt="Antonymph" />
-                </a>
-                <a
+                />
+
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/nyan-cat.gif"
+                    alt="Nyan Cat"
                     href="https://www.youtube.com/watch?v=2yJgwwDcgV8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img src="/blinkies/stamps/nyan-cat.gif" alt="Nyan Cat" />
-                </a>
-                <img src="/blinkies/stamps/nyan-cat-portal.gif" alt="Nycan Cat Portal" />
-                <img src="/blinkies/stamps/ralsei-kris-splat.webp" alt="Ralsei & Kris splat" />
-                <a
+                />
+
+                <Blinkie type="stamp" src="/blinkies/stamps/nyan-cat-portal.gif" alt="Nycan Cat Portal" />
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/ralsei-kris-splat.webp"
+                    alt="Ralsei & Kris splat"
+                />
+
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/wheatley-crab.gif"
+                    alt="Wheatley Crab"
                     href="https://www.youtube.com/watch?v=v47zSNZcyPQ"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img src="/blinkies/stamps/wheatley-crab.gif" alt="Wheatley Crab" />
-                </a>
-                <a href="https://www.youtube.com/@ashens" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/stamps/ashens.gif" alt="ashens.com" />
-                </a>
-                <a href="https://www.youtube.com/@NerdCubed" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/stamps/nerdcubed.png" alt="NerdCubed Gaming" />
-                </a>
-                <img src="/blinkies/stamps/smiling-friends.gif" alt="Smiling Friends" />
-                <img src="/blinkies/stamps/spongebob-gary.png" alt="Spongebob Gary" />
-                <img src="/blinkies/stamps/pinkie-hey-squidward.gif" alt="Hey Squidward" />
-                <img src="/blinkies/stamps/dogz.png" alt="Dogz" />
-                <img src="/blinkies/stamps/windows-7.png" alt="Windows 7" />
-                <img src="/blinkies/stamps/i-love-lua.png" alt="I Love Lua" />
-                <img src="/blinkies/stamps/paint-dot-net.jpg" alt="I use Paint.NET" />
+                />
+
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/ashens.gif"
+                    alt="ashens.com"
+                    href="https://www.youtube.com/@ashens"
+                />
+
+                <Blinkie
+                    type="stamp"
+                    src="/blinkies/stamps/nerdcubed.png"
+                    alt="NerdCubed Gaming"
+                    href="https://www.youtube.com/@NerdCubed"
+                />
+
+                <Blinkie type="stamp" src="/blinkies/stamps/smiling-friends.gif" alt="Smiling Friends" />
+                <Blinkie type="stamp" src="/blinkies/stamps/spongebob-gary.png" alt="Spongebob Gary" />
+                <Blinkie type="stamp" src="/blinkies/stamps/pinkie-hey-squidward.gif" alt="Hey Squidward" />
+                <Blinkie type="stamp" src="/blinkies/stamps/dogz.png" alt="Dogz" />
+                <Blinkie type="stamp" src="/blinkies/stamps/windows-7.png" alt="Windows 7" />
+                <Blinkie type="stamp" src="/blinkies/stamps/i-love-lua.png" alt="I Love Lua" />
+                <Blinkie type="stamp" src="/blinkies/stamps/paint-dot-net.jpg" alt="I use Paint.NET" />
             </div>
         </PaperBlock>
 
         <PaperBlock>
             <Content theme="paper">
+                <!-- TODO: Fix spacing -->
                 <h2>Buttons</h2>
+                <br />
             </Content>
             <div class="buttons-grid">
-                <img src="/blinkies/buttons/pride-rainbow.png" alt="Rainbow pride flag" />
-                <img src="/blinkies/buttons/pride-aroace.png" alt="Aroace pride flag" />
-                <img src="/blinkies/buttons/pride-asexual.png" alt="Asexual pride flag" />
-                <img src="/blinkies/buttons/pride-mlm.png" alt="MLM pride flag" />
-                <img src="/blinkies/buttons/made-with-my-own-two-paws.jpg" alt="Made with my own two paws" />
-                <a href="https://neocities.org" target="_blank" rel="noopener noreferrer">
-                    <img
-                        src="/blinkies/buttons/neocities-delete-twitter.gif"
-                        alt="Delete Twitter, make a Neocities"
-                    />
-                </a>
-                <a href="https://deltarune.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/kris-where-tf-are-we.png" alt="Kris where tf are we" />
-                </a>
-                <img src="/blinkies/buttons/cookie-free.gif" alt="This site is certified 100% cookie free!" />
-                <a
+                <Blinkie type="button" src="/blinkies/buttons/pride-rainbow.png" alt="Rainbow pride flag" />
+                <Blinkie type="button" src="/blinkies/buttons/pride-aroace.png" alt="Aroace pride flag" />
+                <Blinkie type="button" src="/blinkies/buttons/pride-asexual.png" alt="Asexual pride flag" />
+                <Blinkie type="button" src="/blinkies/buttons/pride-mlm.png" alt="MLM pride flag" />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/made-with-my-own-two-paws.jpg"
+                    alt="Made with my own two paws"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/neocities-delete-twitter.gif"
+                    alt="Delete Twitter, make a Neocities"
+                    href="https://neocities.org"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/kris-where-tf-are-we.png"
+                    alt="Kris where tf are we"
+                    href="https://deltarune.com/"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/cookie-free.gif"
+                    alt="This site is certified 100% cookie free!"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/nyan-cat.gif"
+                    alt="Nyan Cat"
                     href="https://www.youtube.com/watch?v=2yJgwwDcgV8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img src="/blinkies/buttons/nyan-cat.gif" alt="Nyan Cat" />
-                </a>
-                <a href="https://www.firefox.com" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/firefox.gif" alt="Firefox" />
-                </a>
-                <img src="/blinkies/buttons/anything-but-chrome.gif" alt="Anything But Chrome" />
-                <a href="https://ublockorigin.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/ublock-now.png" alt="uBlock Origin Now!" />
-                </a>
-                <a href="https://archive.org/" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/internet-archive.gif" alt="Internet Archive" />
-                </a>
-                <a href="https://www.minecraft.net" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/minecraft.png" alt="Minecraft" />
-                </a>
-                <a href="https://pony.town/" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/pony-town.png" alt="Pony Town" />
-                </a>
-                <img src="/blinkies/buttons/portal.jpg" alt="Portal" />
-                <img src="/blinkies/buttons/nintendo-ds.jpg" alt="Nintendo DS" />
-                <img src="/blinkies/buttons/nintendo-wii.gif" alt="Nintendo Wii" />
-                <a href="https://store.steampowered.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/steam.gif" alt="Play with Steam" />
-                </a>
-                <a href="https://www.getpaint.net" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/paint-dot-net.jpg" alt="paint.net" />
-                </a>
-                <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/vscode.gif" alt="Visual Studio Code" />
-                </a>
-                <a href="https://loveweb.neocities.org/" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/loveweb-button.gif" alt="Loveweb" />
-                </a>
-                <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank" rel="noopener noreferrer">
-                    <img src="/blinkies/buttons/iso8601.png" alt="ISO 8601 YYYY-MM-DD" />
-                </a>
-                <img src="/blinkies/buttons/css-is-awesome.png" alt="CSS is awesome" />
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/firefox.gif"
+                    alt="Firefox"
+                    href="https://www.firefox.com"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/anything-but-chrome.gif"
+                    alt="Anything But Chrome"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/ublock-now.png"
+                    alt="uBlock Origin Now!"
+                    href="https://ublockorigin.com/"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/internet-archive.gif"
+                    alt="Internet Archive"
+                    href="https://archive.org/"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/minecraft.png"
+                    alt="Minecraft"
+                    href="https://www.minecraft.net"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/pony-town.png"
+                    alt="Pony Town"
+                    href="https://pony.town/"
+                />
+                <Blinkie type="button" src="/blinkies/buttons/portal.jpg" alt="Portal" />
+                <Blinkie type="button" src="/blinkies/buttons/nintendo-ds.jpg" alt="Nintendo DS" />
+                <Blinkie type="button" src="/blinkies/buttons/nintendo-wii.gif" alt="Nintendo Wii" />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/steam.gif"
+                    alt="Play with Steam"
+                    href="https://store.steampowered.com/"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/paint-dot-net.jpg"
+                    alt="paint.net"
+                    href="https://www.getpaint.net"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/vscode.gif"
+                    alt="Visual Studio Code"
+                    href="https://code.visualstudio.com/"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/loveweb-button.gif"
+                    alt="Loveweb"
+                    href="https://loveweb.neocities.org/"
+                />
+                <Blinkie
+                    type="button"
+                    src="/blinkies/buttons/iso8601.png"
+                    alt="ISO 8601 YYYY-MM-DD"
+                    href="https://en.wikipedia.org/wiki/ISO_8601"
+                />
+                <Blinkie type="button" src="/blinkies/buttons/css-is-awesome.png" alt="CSS is awesome" />
             </div>
         </PaperBlock>
     </SimpleLayout>
@@ -206,41 +327,18 @@ import Page from "$layouts/Page.astro";
     .buttons-grid {
         display: grid;
         justify-items: center;
-        gap: 0.5rem;
-
-        img {
-            width: 100%;
-            object-fit: contain;
-            image-rendering: pixelated;
-        }
-
-        a {
-            display: flex;
-            width: 100%;
-        }
+        gap: 0.25rem;
     }
 
     .blinkie-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-
-        img {
-            aspect-ratio: 300 / 40;
-        }
     }
 
     .stamps-grid {
         grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
-
-        img {
-            aspect-ratio: 99 / 56;
-        }
     }
 
     .buttons-grid {
         grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
-
-        img {
-            aspect-ratio: 88 / 31;
-        }
     }
 </style>

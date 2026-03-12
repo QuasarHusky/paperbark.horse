@@ -1,0 +1,39 @@
+---
+interface Props {
+    type: "blinkie" | "stamp" | "button";
+    src: string;
+    alt?: string;
+    href?: string;
+}
+
+const { type, src, alt, href } = Astro.props;
+---
+
+<a {href} class:list={["blinkie", `type-${type}`]} target="_blank" rel="noreferrer noopener">
+    <img {src} {alt} loading="lazy" />
+</a>
+
+<style lang="scss">
+    .blinkie {
+        display: flex;
+        width: 100%;
+
+        img {
+            width: 100%;
+            object-fit: contain;
+            image-rendering: pixelated;
+        }
+
+        &.type-blinkie img {
+            aspect-ratio: 300 / 40;
+        }
+
+        &.type-stamp img {
+            aspect-ratio: 99 / 56;
+        }
+
+        &.type-button img {
+            aspect-ratio: 88 / 31;
+        }
+    }
+</style>
