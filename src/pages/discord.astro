@@ -1,13 +1,16 @@
 ---
-import PaperBlock from "$components/containers/PaperBlock.astro";
+import Paper from "$components/containers/Paper.astro";
 import Content from "$components/elements/Content.astro";
 import Page from "$layouts/Page.astro";
+
+import DiscordIcon from "$assets/icons/discord.svg";
+import ArrowButton from "$components/elements/ArrowButton.astro";
 ---
 
-<Page title="Discord" navigation={false}>
+<Page title="Discord" navigation={false} footer={false}>
     <div class="dialog">
         <img class="dialog-image" src="/assets/discord-header.png" alt="" />
-        <PaperBlock>
+        <Paper>
             <div class="dialog-inner">
                 <div class="dialog-content">
                     <h1 class="title">Add me on Discord!</h1>
@@ -20,17 +23,17 @@ import Page from "$layouts/Page.astro";
                         </ul>
                     </Content>
                     <div class="discord-username">
-                        <img src="/assets/icons/discord.svg" alt="" style="width: 2.2rem;" />
+                        <DiscordIcon style="width: 2.2rem;" />
                         <span>QuasarHusky</span>
                     </div>
-                    <Content theme="paper">
-                        <p style="text-align: center;">
-                            <a href="/">Go back</a>
-                        </p>
-                    </Content>
+                    <div class="button-container">
+                        <ArrowButton href="/socials" direction="backwards" visualCenter={true}>
+                            Go back
+                        </ArrowButton>
+                    </div>
                 </div>
             </div>
-        </PaperBlock>
+        </Paper>
     </div>
 </Page>
 
@@ -88,5 +91,13 @@ import Page from "$layouts/Page.astro";
 
     .discord-username img {
         user-select: none;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
     }
 </style>
