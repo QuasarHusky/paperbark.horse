@@ -1,5 +1,8 @@
 ---
 import StickyNote from "$components/containers/StickyNote.astro";
+import { getCollection } from "astro:content";
+
+const quotes = (await getCollection("tagline")).map((tagline) => tagline.data);
 ---
 
 <a id="tagline-container" target="_blank" rel="noreferrer noopener">
@@ -8,147 +11,17 @@ import StickyNote from "$components/containers/StickyNote.astro";
     </StickyNote>
 </a>
 
-<script>
-    type Quote = {
-        type: "text" | "quote" | "song";
-        text: string;
-        href?: string;
-    };
-
-    let quotes: Quote[] = [
-        // Songs
-        {
-            type: "song",
-            text: "Winter wrap up, winter wrap up!",
-            href: "https://www.youtube.com/watch?v=ZEFJ8Bu66jg",
-        },
-        {
-            type: "song",
-            text: "I'm Creekflow!",
-            href: "https://www.youtube.com/watch?v=4PyFkH9LCGQ",
-        },
-        {
-            type: "song",
-            text: "I'm the antonymph of the internet!",
-            href: "https://www.youtube.com/watch?v=CNPdO5TZ1DQ",
-        },
-        {
-            type: "song",
-            text: "We've got hearts, as strong as horses!",
-            href: "https://www.youtube.com/watch?v=PnEmT6IvMEg",
-        },
-        {
-            type: "song",
-            text: "We're apples to the core!",
-            href: "https://www.youtube.com/watch?v=j_jMoXgi8cI",
-        },
-        {
-            type: "song",
-            text: "You can make it if you try with a hop, skip and jump!",
-            href: "https://www.youtube.com/watch?v=s_lJFoyujrA",
-        },
-        {
-            type: "song",
-            text: "We'll make our mark!",
-            href: "https://www.youtube.com/watch?v=2BD6PQGZue8",
-        },
-        {
-            type: "song",
-            text: "We got this together!",
-            href: "https://www.youtube.com/watch?v=xDH9ZkWe0gE",
-        },
-        {
-            type: "song",
-            text: "It's time to be awesome!",
-            href: "https://www.youtube.com/watch?v=HteFa5XFHBI",
-        },
-        {
-            type: "song",
-            text: "There's a lotta little things you've gotta do in this world!",
-            href: "https://www.youtube.com/watch?v=3vuzWBB8ETY",
-        },
-        {
-            type: "song",
-            text: "'Cause rainbows won't light up the sky, unless you let it rain!",
-            href: "https://www.youtube.com/watch?v=RAhqxvgQYn0",
-        },
-        {
-            type: "song",
-            text: "You're in my head like a catchy song!",
-            href: "https://www.youtube.com/watch?v=xOsTRTMvpsk",
-        },
-        {
-            type: "song",
-            text: "Come on everypony, smile&nbsp;smile&nbsp;smile!",
-            href: "https://www.youtube.com/watch?v=qlApZCMMtY0",
-        },
-        {
-            type: "song",
-            text: "The magic of friendship grows!",
-            href: "https://www.youtube.com/watch?v=dUoiwSQdnoc",
-        },
-        {
-            type: "song",
-            text: "We're in this together!",
-            href: "https://www.youtube.com/watch?v=qQhWAnb6oFs",
-        },
-        {
-            type: "song",
-            text: "Don't mine at night!",
-            href: "https://www.youtube.com/watch?v=p_wjMzoixfw",
-        },
-        {
-            type: "song",
-            text: "Horse is good! Go horse!",
-            href: "https://www.youtube.com/watch?v=alA1oBBuz2o",
-        },
-        {
-            type: "song",
-            text: "Who knows when the sun will rise again?",
-            href: "https://www.youtube.com/watch?v=HZ4HdhKJITI",
-        },
-        {
-            type: "song",
-            text: "Hop in the pony, bring out the juicer!",
-            href: "https://youtu.be/HKpsl3tJmIU?t=603",
-        },
-        {
-            type: "song",
-            text: "Sing it, shelly!",
-            href: "https://www.youtube.com/watch?v=eJr-_KWPRNc",
-        },
-        {
-            type: "song",
-            text: "The music never stops, no!",
-            href: "https://youtu.be/HKpsl3tJmIU?t=3981",
-        },
-
-        // Quotes
-        { type: "quote", text: "Hoof bump!" },
-        { type: "quote", text: "Eeyup!" },
-        { type: "quote", text: "20% cooler!" },
-        { type: "quote", text: "The night will last forever!" },
-        { type: "quote", text: "I just don't know what went wrong!" },
-        { type: "quote", text: "What the dog doing?" },
-        { type: "quote", text: "Chicken jockey!" },
-        { type: "quote", text: "Peanut butter!", href: "https://www.youtube.com/watch?v=1cB3hnkKSYY" },
-
-        // Text
-        { type: "text", text: "I &#9829; Vinyl Scratch!" },
-        { type: "text", text: "I &#9829; Sunburst!" },
-        { type: "text", text: "I &#9829; Big Mac!" },
-        { type: "text", text: "I &#9829; Marble Pie!" },
-        { type: "text", text: "Every pony is best pony!" },
-        { type: "text", text: "Crazy? I was crazy once..." },
-    ];
-
+<script define:vars={{ quotes }}>
     function refreshQuote() {
         let taglineText = document.getElementById("tagline-text");
         let taglineContainer = document.getElementById("tagline-container");
 
         if (!taglineText || !taglineContainer) return;
 
-        let quote = quotes[Math.floor(Math.random() * quotes.length)];
+        let forcedMode = quotes.some((quote) => quote.force);
+        let pickableQuotes = quotes.filter((quote) => (forcedMode ? quote.force : true));
+
+        let quote = pickableQuotes[Math.floor(Math.random() * pickableQuotes.length)];
 
         if (quote.type === "song") {
             taglineText.innerHTML = `&#9835;&nbsp;${quote.text}&nbsp;&#9835;`;
@@ -178,10 +51,11 @@ import StickyNote from "$components/containers/StickyNote.astro";
     #tagline-text {
         max-width: 34ch;
 
-        padding: 1rem 2.2rem;
+        padding: 1.2rem 2.5rem;
 
         font-weight: var(--font-medium);
         text-align: center;
         text-wrap: balance;
+        line-height: 1.25;
     }
 </style>

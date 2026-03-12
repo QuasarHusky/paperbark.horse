@@ -74,13 +74,12 @@ const { theme = "default", style } = Astro.props;
 
         > ul,
         > ol {
-            margin: 0;
             padding-left: 1em;
         }
     }
 
     .content.theme-paper {
-        > p a {
+        > * a[href] {
             background-color: var(--highlighter-yellow);
             mix-blend-mode: multiply;
 
