@@ -1,6 +1,6 @@
 ---
 interface Props {
-    src: string;
+    src?: string;
     alt?: string;
     width?: string;
     dynamic?: boolean;
@@ -11,7 +11,7 @@ const { src, alt = "", width, dynamic = false, angle = "0deg" } = Astro.props;
 ---
 
 <div class:list={["polaroid", { dynamic }]} style={{ "--polaroid-width": width, "--polaroid-angle": angle }}>
-    <img {src} {alt} />
+    {src ? <img {src} {alt} /> : <slot />}
 </div>
 
 <style lang="scss">

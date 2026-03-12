@@ -1,17 +1,18 @@
 ---
-import StickyNote from "$components/containers/StickyNote.astro";
 import Polaroid from "$components/elements/Polaroid.astro";
-import Tagline from "./Tagline.astro";
+import Tagline from "$components/display/Tagline.astro";
+import TitleSVG from "$assets/paperbark-title.svg";
+import paperbarkProfile from "$assets/paperbark-profile.png";
 ---
 
 <div class="site-banner">
     <div class="left">
-        <Polaroid src="/Paperbark PFP.png" angle="-5deg" width="100%" />
+        <Polaroid src={paperbarkProfile.src} angle="-5deg" width="100%" />
         <button id="boop-target" title="Boop!"></button>
         <div id="explosion"></div>
     </div>
     <div class="right">
-        <img src="/assets/paperbark-title.svg" alt="Paperbark" class="title" />
+        <TitleSVG class="title" />
         <Tagline />
     </div>
 </div>
