@@ -2,7 +2,7 @@
 import StickyNote from "$components/containers/StickyNote.astro";
 import { getCollection } from "astro:content";
 
-const quotes = (await getCollection("tagline")).map((tagline) => tagline.data);
+const quotes = await getCollection("tagline");
 ---
 
 <a id="tagline-container" target="_blank" rel="noreferrer noopener" class="hidden">
@@ -12,32 +12,58 @@ const quotes = (await getCollection("tagline")).map((tagline) => tagline.data);
 </a>
 
 <script define:vars={{ quotes }}>
+    let seenQuotes = [];
+
+    try {
+        let seenData = localStorage.getItem("taglines-seen");
+
+        if (seenData) {
+            seenQuotes = JSON.parse(seenData);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
     function refreshQuote() {
         let taglineText = document.getElementById("tagline-text");
         let taglineContainer = document.getElementById("tagline-container");
 
         if (!taglineText || !taglineContainer) return;
 
-        let forcedMode = quotes.some((quote) => quote.force);
-        let pickableQuotes = quotes.filter((quote) => (forcedMode ? quote.force : true));
+        if (seenQuotes.length >= quotes.length) {
+            seenQuotes = [];
+        }
+        while (seenQuotes.length >= 20) {
+            seenQuotes.shift();
+        }
+
+        let forcedMode = quotes.some((quote) => quote.data.force);
+        let pickableQuotes = quotes.filter((quote) =>
+            forcedMode ? quote.data.force : !seenQuotes.includes(quote.id),
+        );
+
+        console.log(pickableQuotes.length);
 
         let quote = pickableQuotes[Math.floor(Math.random() * pickableQuotes.length)];
 
-        if (quote.type === "song") {
-            taglineText.innerHTML = `&#9835;&nbsp;${quote.text}&nbsp;&#9835;`;
-        } else if (quote.type === "quote") {
-            taglineText.innerHTML = `&ldquo;${quote.text}&rdquo;`;
+        if (quote.data.type === "song") {
+            taglineText.innerHTML = `&#9835;&nbsp;${quote.data.text}&nbsp;&#9835;`;
+        } else if (quote.data.type === "quote") {
+            taglineText.innerHTML = `&ldquo;${quote.data.text}&rdquo;`;
         } else {
-            taglineText.innerHTML = quote.text;
+            taglineText.innerHTML = quote.data.text;
         }
 
-        if (quote.href) {
-            taglineContainer.setAttribute("href", quote.href);
+        if (quote.data.href) {
+            taglineContainer.setAttribute("href", quote.data.href);
         } else {
             taglineContainer.removeAttribute("href");
         }
 
         taglineContainer.classList.remove("hidden");
+
+        seenQuotes.push(quote.id);
+        localStorage.setItem("taglines-seen", JSON.stringify(seenQuotes));
     }
 
     refreshQuote();
