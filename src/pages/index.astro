@@ -6,26 +6,20 @@ import CenterBlock from "$components/blocks/CenterBlock.astro";
 import Paper from "$components/containers/Paper.astro";
 import StickyNote from "$components/containers/StickyNote.astro";
 import Content from "$components/elements/Content.astro";
+import ArrowButton from "$components/elements/ArrowButton.astro";
 ---
 
 <Page title="Home" navigation={false}>
     <SiteBanner />
-    <ContentBlock>
+    <CenterBlock>
         <Paper>
             <Content theme="paper">
-                <p>There's nothing here yet...</p>
+                <p>This site is under construction!</p>
+                <br />
             </Content>
+            <div>
+                <ArrowButton href="/socials">Check out my socials</ArrowButton>
+            </div>
         </Paper>
-    </ContentBlock>
-    <CenterBlock>
-        <StickyNote>
-            <Content>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio repudiandae,
-                    voluptatibus libero facere cum dignissimos sequi atque, quia modi eius maiores tempora,
-                    autem minus debitis odio rem quis deserunt veniam.
-                </p>
-            </Content>
-        </StickyNote>
     </CenterBlock>
 </Page>
