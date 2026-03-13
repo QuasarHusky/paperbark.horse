@@ -10,12 +10,13 @@ jobs:
       image: node:24
     steps:
       - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+      - run: pnpm ci
+      - run: pnpm build
       - name: Add SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519
-      - run: npm ci
-      - run: npm run build
       - name: Deploy using SCP
         run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/data/sites/paperbark.horse/web_deploy
       - name: Update live site
