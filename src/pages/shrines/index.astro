@@ -1,0 +1,24 @@
+---
+import Page from "$layouts/Page.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
+import Paper from "$components/containers/Paper.astro";
+import Content from "$components/elements/Content.astro";
+import ArrowButton from "$components/elements/ArrowButton.astro";
+---
+
+<Page title="Shrines">
+    <ContentBlock>
+        <Paper>
+            <Content theme="paper">
+                <h2>Shrines</h2>
+                <p>...</p>
+                <br />
+            </Content>
+            <div style="display: flex; flex-direction: column; align-items: start;">
+                <ArrowButton href="/shrines/vinyl-scratch">Vinyl Scratch</ArrowButton>
+            </div>
+        </Paper>
+    </ContentBlock>
+</Page>
+
+<style lang="scss"></style>

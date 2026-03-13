@@ -1,12 +1,11 @@
 ---
 import Page from "$layouts/Page.astro";
 import SiteBanner from "$components/blocks/SiteBanner.astro";
-import ContentBlock from "$components/blocks/ContentBlock.astro";
 import CenterBlock from "$components/blocks/CenterBlock.astro";
 import Paper from "$components/containers/Paper.astro";
-import StickyNote from "$components/containers/StickyNote.astro";
 import Content from "$components/elements/Content.astro";
 import ArrowButton from "$components/elements/ArrowButton.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
 ---
 
 <Page title="Home" navigation={false}>
@@ -14,7 +13,7 @@ import ArrowButton from "$components/elements/ArrowButton.astro";
     <CenterBlock>
         <Paper>
             <Content theme="paper" style="max-width: 20rem;">
-                <p>This site is under construction!</p>
+                <p><strong>This site is under construction!</strong></p>
                 <p>More things will be here soon, but for now you can check out my social links.</p>
                 <br />
             </Content>
@@ -23,4 +22,15 @@ import ArrowButton from "$components/elements/ArrowButton.astro";
             </div>
         </Paper>
     </CenterBlock>
+    <ContentBlock>
+        <Paper>
+            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;">
+                <ArrowButton href="/about">About</ArrowButton>
+                <ArrowButton href="/music">Music</ArrowButton>
+                <ArrowButton href="/games">Games</ArrowButton>
+                <ArrowButton href="/shrines">Shrines</ArrowButton>
+                <ArrowButton href="/blinkies">Blinkies</ArrowButton>
+            </div>
+        </Paper>
+    </ContentBlock>
 </Page>

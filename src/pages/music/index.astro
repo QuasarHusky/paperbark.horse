@@ -1,0 +1,115 @@
+---
+import Page from "$layouts/Page.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
+import Paper from "$components/containers/Paper.astro";
+import Content from "$components/elements/Content.astro";
+---
+
+<Page title="Music">
+    <ContentBlock>
+        <Paper>
+            <Content theme="paper">
+                <h2>Playlists</h2>
+                <p>
+                    I love making playlists, and if you want a good idea of the music I listen to then this is
+                    the place to start.
+                </p>
+                <br />
+            </Content>
+            <div class="album-grid">
+                <a href="/playlists/horse-tunes" class="album">
+                    <img src="/images/playlists/horse-tunes.jpg" alt="Horse Tunes" />
+                </a>
+                <a href="/playlists/mixtape-2025" class="album">
+                    <img src="/images/playlists/mixtape-2025.jpg" alt="Horse Tunes" />
+                </a>
+                <a href="/playlists/ukpc-northbound" class="album">
+                    <img src="/images/playlists/ukpc-northbound.jpg" alt="UKPC Northbound" />
+                </a>
+            </div>
+        </Paper>
+    </ContentBlock>
+    <ContentBlock>
+        <Paper>
+            <Content theme="paper">
+                <h2>Favourite Songs</h2>
+                <br />
+            </Content>
+            <div class="shelf">
+                <div class="spotlight">
+                    <img src="/images/music/rawrity-brink.jpg" alt="rawrity - brink!" />
+                </div>
+                <div class="details">
+                    <Content>
+                        <!-- TODO: Placeholder text -->
+                        <h3>rawrity - brink</h3>
+                        <p>?</p>
+                    </Content>
+                </div>
+            </div>
+        </Paper>
+    </ContentBlock>
+    <ContentBlock>
+        <Paper>
+            <Content theme="paper">
+                <h2>Albums</h2>
+                <!-- TODO: Placeholder text -->
+                <p>Something something music good</p>
+                <br />
+            </Content>
+            <div class="album-grid">
+                <a class="album">
+                    <img src="/images/music/ponies-at-dawn-fusion.jpg" alt="Ponies at Dawn - Fusion" />
+                </a>
+            </div>
+        </Paper>
+    </ContentBlock>
+</Page>
+
+<style lang="scss">
+    .album-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+
+        gap: 1rem;
+    }
+
+    .shelf {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+
+        gap: 1rem;
+
+        .spotlight img {
+            width: 100%;
+            border-radius: 0.2rem;
+            box-shadow: var(--shadow-medium);
+        }
+    }
+
+    .album {
+        width: 100%;
+
+        border-radius: 0.2rem;
+
+        scale: 100%;
+        box-shadow: var(--shadow-medium);
+        z-index: 0;
+        overflow: hidden;
+
+        transition-property: scale, box-shadow, z-index;
+        transition-duration: 0.15s;
+
+        img {
+            width: 100%;
+            background-color: white;
+            aspect-ratio: 1 / 1;
+        }
+
+        &:hover,
+        &:focus-visible {
+            scale: 110%;
+            z-index: 10;
+        }
+    }
+</style>
