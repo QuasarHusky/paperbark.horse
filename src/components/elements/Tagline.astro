@@ -33,7 +33,7 @@ const quotes = await getCollection("tagline");
         if (seenQuotes.length >= quotes.length) {
             seenQuotes = [];
         }
-        while (seenQuotes.length >= 20) {
+        while (seenQuotes.length >= 50) {
             seenQuotes.shift();
         }
 
