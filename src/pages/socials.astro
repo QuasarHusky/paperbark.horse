@@ -4,13 +4,14 @@ import SiteBanner from "$components/blocks/SiteBanner.astro";
 import ArrowButton from "$components/elements/ArrowButton.astro";
 import CenterBlock from "$components/blocks/CenterBlock.astro";
 import Paper from "$components/containers/Paper.astro";
+import ContentBlock from "$components/blocks/ContentBlock.astro";
 
 import DiscordIcon from "$assets/icons/discord.svg";
 import TelegramIcon from "$assets/icons/telegram.svg";
 import SteamIcon from "$assets/icons/steam.svg";
 import LastFmIcon from "$assets/icons/lastfm.svg";
 import BlueskyIcon from "$assets/icons/bluesky.svg";
-import ContentBlock from "$components/blocks/ContentBlock.astro";
+import GitHubIcon from "$assets/icons/github.svg";
 ---
 
 <Page title="Socials" navigation={false}>
@@ -87,13 +88,30 @@ import ContentBlock from "$components/blocks/ContentBlock.astro";
                         <span class="name">@quasarhusky.uk</span>
                     </div>
                 </a>
+                <a
+                    class="link"
+                    href="github.com/QuasarHusky"
+                    target="_blank"
+                    rel="noreferrer"
+                    style="--bg: #232925; --fg: #ffffff;"
+                >
+                    <div class="icon">
+                        <GitHubIcon class="icon-image" style="transform: scale(1.2);" />
+                    </div>
+                    <div class="details">
+                        <span class="service">GitHub</span>
+                        <span class="name">QuasarHusky</span>
+                    </div>
+                </a>
             </div>
         </Paper>
     </ContentBlock>
     <CenterBlock>
         <div class="button-container">
             <ArrowButton href="https://quasarhusky.atabook.org/" external={true}>
-                Sign my guestbook!
+                <span style="font-size: 1.2rem; font-weight: var(--font-bold); padding: 0.2rem 0.1rem;">
+                    Sign my guestbook!
+                </span>
             </ArrowButton>
             <!-- <ArrowButton href="/">Explore the website</ArrowButton> -->
         </div>
