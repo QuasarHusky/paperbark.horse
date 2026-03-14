@@ -3,17 +3,16 @@ import ContentBlock from "$components/blocks/ContentBlock.astro";
 import Paper from "$components/containers/Paper.astro";
 import Blinkie from "$components/elements/Blinkie.astro";
 import Content from "$components/elements/Content.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
 import Page from "$layouts/Page.astro";
 ---
 
 <Page title="Blinkies">
     <ContentBlock>
         <Paper>
-            <Content theme="paper">
-                <!-- TODO: Fix spacing -->
-                <h2>Blinkies</h2>
-                <br />
-            </Content>
+            <PaperTitle>
+                <h1>Blinkies</h1>
+            </PaperTitle>
             <div class="blinkies-grid">
                 <div class="blinkie-grid">
                     <Blinkie type="blinkie" src="/blinkies/blinkies/fluttershy.gif" alt="Fluttershy" />
@@ -107,11 +106,9 @@ import Page from "$layouts/Page.astro";
 
     <ContentBlock>
         <Paper>
-            <Content theme="paper">
-                <!-- TODO: Fix spacing -->
+            <PaperTitle>
                 <h2>Stamps</h2>
-                <br />
-            </Content>
+            </PaperTitle>
             <div class="stamps-grid">
                 <Blinkie type="stamp" src="/blinkies/stamps/vinyl-scratch.png" alt="Vinyl Scratch" />
                 <Blinkie type="stamp" src="/blinkies/stamps/dj-pon3.gif" alt="Vinyl Scratch" />
@@ -213,11 +210,9 @@ import Page from "$layouts/Page.astro";
 
     <ContentBlock>
         <Paper>
-            <Content theme="paper">
-                <!-- TODO: Fix spacing -->
+            <PaperTitle>
                 <h2>Buttons</h2>
-                <br />
-            </Content>
+            </PaperTitle>
             <div class="buttons-grid">
                 <Blinkie type="button" src="/blinkies/buttons/pride-rainbow.png" alt="Rainbow pride flag" />
                 <Blinkie type="button" src="/blinkies/buttons/pride-aroace.png" alt="Aroace pride flag" />

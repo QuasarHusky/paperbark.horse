@@ -3,13 +3,16 @@ import Page from "$layouts/Page.astro";
 import ContentBlock from "$components/blocks/ContentBlock.astro";
 import Paper from "$components/containers/Paper.astro";
 import Content from "$components/elements/Content.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
 ---
 
 <Page title="Music">
     <ContentBlock>
         <Paper>
+            <PaperTitle>
+                <h1>Playlists</h1>
+            </PaperTitle>
             <Content theme="paper">
-                <h2>Playlists</h2>
                 <p>
                     I love making playlists, and if you want a good idea of the music I listen to then this is
                     the place to start.
@@ -31,10 +34,9 @@ import Content from "$components/elements/Content.astro";
     </ContentBlock>
     <ContentBlock>
         <Paper>
-            <Content theme="paper">
-                <h2>Favourite Songs</h2>
-                <br />
-            </Content>
+            <PaperTitle>
+                <h1>Favourites</h1>
+            </PaperTitle>
             <div class="shelf">
                 <div class="spotlight">
                     <img src="/images/music/rawrity-brink.jpg" alt="rawrity - brink!" />
@@ -51,8 +53,10 @@ import Content from "$components/elements/Content.astro";
     </ContentBlock>
     <ContentBlock>
         <Paper>
+            <PaperTitle>
+                <h1>Albums</h1>
+            </PaperTitle>
             <Content theme="paper">
-                <h2>Albums</h2>
                 <!-- TODO: Placeholder text -->
                 <p>Something something music good</p>
                 <br />

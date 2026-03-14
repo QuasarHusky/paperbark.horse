@@ -5,6 +5,7 @@ import ArrowButton from "$components/elements/ArrowButton.astro";
 import CenterBlock from "$components/blocks/CenterBlock.astro";
 import Paper from "$components/containers/Paper.astro";
 import ContentBlock from "$components/blocks/ContentBlock.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
 
 import DiscordIcon from "$assets/icons/discord.svg";
 import TelegramIcon from "$assets/icons/telegram.svg";
@@ -18,6 +19,9 @@ import GitHubIcon from "$assets/icons/github.svg";
     <SiteBanner />
     <ContentBlock width="30rem">
         <Paper>
+            <PaperTitle>
+                <h1>Social Links</h1>
+            </PaperTitle>
             <div class="link-group">
                 <a class="link" href="/discord" style="--bg: #5865f2; --fg: #ffffff;">
                     <div class="icon">
@@ -138,8 +142,6 @@ import GitHubIcon from "$assets/icons/github.svg";
 
         text-decoration: none;
         color: var(--fg);
-
-        box-shadow: var(--shadow-medium);
     }
 
     .link > .icon {

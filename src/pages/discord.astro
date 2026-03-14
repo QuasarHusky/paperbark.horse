@@ -11,26 +11,24 @@ import ArrowButton from "$components/elements/ArrowButton.astro";
     <div class="dialog">
         <img class="dialog-image" src="/assets/discord-header.png" alt="" />
         <Paper>
-            <div class="dialog-inner">
-                <div class="dialog-content">
-                    <h1 class="title">Add me on Discord!</h1>
-                    <Content theme="paper">
-                        <ul>
-                            <li>Open the Discord app</li>
-                            <li>Go to your messages</li>
-                            <li>Select "Add Friends"</li>
-                            <li>Choose "Add by Username"</li>
-                        </ul>
-                    </Content>
-                    <div class="discord-username">
-                        <DiscordIcon style="width: 2.2rem;" />
-                        <span>QuasarHusky</span>
-                    </div>
-                    <div class="button-container">
-                        <ArrowButton href="/socials" direction="backwards" visualCenter={true}>
-                            Go back
-                        </ArrowButton>
-                    </div>
+            <div class="dialog-content">
+                <h1 class="title">Add me on Discord!</h1>
+                <Content theme="paper">
+                    <ul>
+                        <li>Open the Discord app</li>
+                        <li>Go to your messages</li>
+                        <li>Select "Add Friends"</li>
+                        <li>Choose "Add by Username"</li>
+                    </ul>
+                </Content>
+                <div class="discord-username">
+                    <DiscordIcon style="width: 2.2rem;" />
+                    <span>QuasarHusky</span>
+                </div>
+                <div class="button-container">
+                    <ArrowButton href="/socials" direction="backwards" visualCenter={true}>
+                        Go back
+                    </ArrowButton>
                 </div>
             </div>
         </Paper>

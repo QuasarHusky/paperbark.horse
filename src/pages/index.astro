@@ -6,6 +6,7 @@ import Paper from "$components/containers/Paper.astro";
 import Content from "$components/elements/Content.astro";
 import ArrowButton from "$components/elements/ArrowButton.astro";
 import ContentBlock from "$components/blocks/ContentBlock.astro";
+import PaperTitle from "$components/elements/PaperTitle.astro";
 ---
 
 <Page title="Home" navigation={false}>
@@ -24,6 +25,9 @@ import ContentBlock from "$components/blocks/ContentBlock.astro";
     </CenterBlock>
     <ContentBlock>
         <Paper>
+            <PaperTitle>
+                <h2>Explore</h2>
+            </PaperTitle>
             <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem;">
                 <ArrowButton href="/about">About</ArrowButton>
                 <ArrowButton href="/music">Music</ArrowButton>
