@@ -163,7 +163,7 @@
     },
     "35": {
         "type": "text",
-        "text": "This is 100% DJ Pon-3 approved!"
+        "text": "100% DJ Pon-3 approved!"
     },
     "36": {
         "type": "song",
@@ -241,7 +241,7 @@
     },
     "52": {
         "type": "song",
-        "text": "You tell me you're fine, then turn, and whine, when will it &ndash; STOP",
+        "text": "You tell me you're fine, then turn, and whine, when will it &ndash; stop",
         "href": "https://www.youtube.com/watch?v=9xgj7e1GuDc"
     },
     "53": {
@@ -250,7 +250,8 @@
     },
     "54": {
         "type": "quote",
-        "text": "Yaaaay!"
+        "text": "Yaaaay!",
+        "href": "https://www.youtube.com/watch?v=6ANsC3zSwuE"
     },
     "55": {
         "type": "song",
@@ -328,7 +329,7 @@
     },
     "72": {
         "type": "text",
-        "text": "The friend group's lore keeper!"
+        "text": "Friend group lore keeper!"
     },
     "73": {
         "type": "text",
@@ -347,7 +348,7 @@
         "text": "Made with my own four hooves!"
     },
     "77": {
-        "type": "text",
+        "type": "quote",
         "text": "I like trains!"
     },
     "78": {
@@ -428,10 +429,123 @@
     },
     "96": {
         "type": "quote",
-        "text": "I'd like to be a tree!"
+        "text": "I'd like to be a tree!",
+        "href": "https://www.youtube.com/watch?v=y1V7utCUmS8"
     },
     "97": {
         "type": "quote",
         "text": "There's only one way to find out &mdash; FIGHT!!!"
+    },
+    "98": {
+        "type": "text",
+        "text": "See you later, alligator!"
+    },
+    "99": {
+        "type": "text",
+        "text": "In a while, crocodile!"
+    },
+    "100": {
+        "type": "text",
+        "text": "100% spaghetti code!"
+    },
+    "101": {
+        "type": "quote",
+        "text": "The animatronics do get a bit quirky at night"
+    },
+    "102": {
+        "type": "text",
+        "text": "Soft and fluffy!"
+    },
+    "103": {
+        "type": "text",
+        "text": "Bookmarked for later!"
+    },
+    "104": {
+        "type": "text",
+        "text": "Late to the party, again!"
+    },
+    "105": {
+        "type": "quote",
+        "text": "Despite everything, it's still you."
+    },
+    "106": {
+        "type": "quote",
+        "text": "The magic of buying two of them!"
+    },
+    "107": {
+        "type": "text",
+        "text": "If not friend, why friend shaped!"
+    },
+    "108": {
+        "type": "text",
+        "text": "Doesn't actually bark!"
+    },
+    "109": {
+        "type": "quote",
+        "text": "Slime is falling from the sky!"
+    },
+    "110": {
+        "type": "text",
+        "text": "Do your fishing quests!"
+    },
+    "111": {
+        "type": "text",
+        "text": "Weird time signatures are my jam!"
+    },
+    "112": {
+        "type": "text",
+        "text": "Key change!"
+    },
+    "113": {
+        "type": "text",
+        "text": "Supports real artists!"
+    },
+    "114": {
+        "type": "text",
+        "text": "/give @a cookie 64"
+    },
+    "115": {
+        "type": "text",
+        "text": "Embrace the cringe!"
+    },
+    "116": {
+        "type": "text",
+        "text": "Snug as a bug in a rug!"
+    },
+    "117": {
+        "type": "text",
+        "text": "Enjoyer of quiet spaces!"
+    },
+    "118": {
+        "type": "quote",
+        "text": "Isn't it iron pick?"
+    },
+    "119": {
+        "type": "text",
+        "text": "Never too old for the bouncy castle!"
+    },
+    "120": {
+        "type": "text",
+        "text": "Collector of pin badges!"
+    },
+    "121": {
+        "type": "text",
+        "text": "Obsessed with lanyards!"
+    },
+    "122": {
+        "type": "text",
+        "text": "Pooltoy enthusiast!"
+    },
+    "123": {
+        "type": "text",
+        "text": "Plushie addict!"
+    },
+    "124": {
+        "type": "text",
+        "text": "Winter is the best season!"
+    },
+    "125": {
+        "type": "text",
+        "text": "Over 2,000 journal entries!"
     }
 }
