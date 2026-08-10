@@ -168,11 +168,18 @@
         }
 
         if (activity.type === "game") {
-            return "tippy-taps";
+            return "sit";
         }
 
         if (activity.type === "software" || activity.type === "programming" || activity.type === "art") {
-            return "sit-ponder";
+            let move = Math.floor(updateTime / 10000) % 2;
+
+            switch (move) {
+                case 0:
+                    return "sit-ponder";
+                case 1:
+                    return "sit-think";
+            }
         }
 
         if (activity.type === "music-production") {
@@ -370,6 +377,29 @@
                     </div>
                 </div>
             {/if}
+            {#if activity.type === "game" && activity.game}
+                <div class="game-info">
+                    {#if activity.game.cover}
+                        <img src={activity.game.cover} alt="" class="game-cover" />
+                    {:else}
+                        <img src="/images/default-game-cover.png" alt="" class="game-cover" />
+                    {/if}
+                    <div class="game-details">
+                        <span class="game-name">
+                            {#if activity.game?.url}
+                                <a href={activity.game.url} target="_blank" rel="noopener noreferrer">
+                                    {activity.game.name}
+                                </a>
+                            {:else}
+                                {activity.game.name}
+                            {/if}
+                        </span>
+                        {#if activeSince}
+                            <span class="active-since">{activeSince}</span>
+                        {/if}
+                    </div>
+                </div>
+            {/if}
         {:else}
             <div class="offline-info">
                 I'm offline right now. Check back later when I'm doing something more interesting!
@@ -511,9 +541,7 @@
         gap: 0.75rem;
 
         .software-cover {
-            width: 5rem;
-
-            border-radius: 0.25rem;
+            width: 3.5rem;
         }
 
         .software-details {
@@ -524,9 +552,27 @@
         .software-name {
             font-weight: var(--font-bold);
         }
+    }
 
-        .active-since {
-            margin-top: 0.25rem;
+    .game-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 0.75rem;
+
+        .game-cover {
+            width: 3.5rem;
+            border-radius: 0.25rem;
+        }
+
+        .game-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-name {
+            font-weight: var(--font-bold);
         }
     }
 
