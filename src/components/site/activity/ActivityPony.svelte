@@ -92,10 +92,10 @@
             return ponyLookAtSrc;
         }
 
-        return animations[animation]?.src;
+        return animations[animation]?.src ?? animations["sit"].src;
     });
 
-    let ponyPixelWidth: number = $derived(animations[animation].width);
+    let ponyPixelWidth: number = $derived(animations[animation]?.width ?? animations["sit"].width);
 
     function onPointerMove(event: PointerEvent) {
         if (!ponyEl) return;

@@ -136,7 +136,11 @@
             return "sit";
         }
 
-        if (activity?.type === "music" || activity?.type === "radio") {
+        if (activity.metadata?.["site.activity.pony-animation"]) {
+            return activity.metadata["site.activity.pony-animation"];
+        }
+
+        if (activity.type === "music" || activity.type === "radio") {
             if (activity.metadata?.["music.high-volume"] === true) {
                 let move = Math.floor(updateTime / 10000) % 2;
 
@@ -155,7 +159,7 @@
             return "dance-sit";
         }
 
-        if (activity?.type === "finding-music") {
+        if (activity.type === "finding-music") {
             if (wakeSate === "asleep") {
                 return "finding-music-sleepy";
             }
@@ -204,6 +208,11 @@
         return "For an eternity";
     });
 
+    let favouriteHeartPulseRate = $derived.by(() => {
+        if (!activity?.metadata?.["site.activity.heart-bpm"]) return 0.6;
+        return 1 / (activity.metadata["site.activity.heart-bpm"] / 60);
+    });
+
     onMount(() => {
         let eventSource = new EventSource("https://api.paperbark.horse/activity/current/live");
 
@@ -248,7 +257,10 @@
                             class="cover-image"
                         />
                         {#if activity.metadata?.["music.favourite"] === true}
-                            <div class="favourite-heart">
+                            <div
+                                class="favourite-heart"
+                                style:--heart-pulse-rate={`${favouriteHeartPulseRate}s`}
+                            >
                                 <div class="shadow">
                                     <img src="/assets/icons/favourite-heart-shadow.svg" alt="" />
                                 </div>
@@ -543,7 +555,7 @@
             user-select: none;
             pointer-events: none;
 
-            animation-duration: 0.6s;
+            animation-duration: var(--heart-pulse-rate, 0.6s);
             animation-iteration-count: infinite;
         }
 
