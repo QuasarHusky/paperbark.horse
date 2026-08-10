@@ -71,21 +71,71 @@
     });
 
     let activityName = $derived.by(() => {
-        if (activity?.type === "music") {
-            return "Listening to music";
-        }
-        if (activity?.type === "radio") {
-            return "Listening to the radio";
-        }
-        if (activity?.type === "finding-music") {
-            return "Choosing a song";
+        if (!activity) {
+            return fallbackName;
         }
 
+        if (activity.metadata?.["site.activity.title"]) {
+            return activity.metadata?.["site.activity.title"];
+        }
+
+        if (activity.type === "music") {
+            return "Listening to music";
+        }
+        if (activity.type === "radio") {
+            return "Listening to the radio";
+        }
+        if (activity.type === "finding-music") {
+            return "Choosing a song";
+        }
+        if (activity.type === "finding-music") {
+            return "Choosing a song";
+        }
+        if (activity.type === "game") {
+            if (activity.game?.name) {
+                return `Playing ${activity.game?.name}`;
+            }
+            return "Playing a game";
+        }
+        if (activity.type === "software") {
+            if (activity.software?.name) {
+                return `Using ${activity.software?.name}`;
+            }
+            return "At their computer";
+        }
+        if (activity.type === "programming") {
+            return "Programming";
+        }
+        if (activity.type === "art") {
+            return "Making art";
+        }
+        if (activity.type === "music-production") {
+            return "Making music";
+        }
+
+        console.warn(`Unknown activity type ${activity.type}`);
+        return "Up to mischief";
+    });
+
+    let fallbackName = $derived.by(() => {
         let lines = idleLines[wakeSate] ?? ["Away from keyboard"];
         return lines[Math.floor(Math.random() * lines.length)];
     });
 
     let animation: ComponentProps<typeof ActivityPony>["animation"] = $derived.by(() => {
+        if (!activity) {
+            if (wakeSate === "asleep") {
+                return "sleep";
+            }
+            if (wakeSate === "morning") {
+                return "groggy";
+            }
+            if (wakeSate === "evening") {
+                return "eepy";
+            }
+            return "sit";
+        }
+
         if (activity?.type === "music" || activity?.type === "radio") {
             if (activity.metadata?.["music.high-volume"] === true) {
                 let move = Math.floor(updateTime / 10000) % 2;
@@ -113,17 +163,45 @@
             return "finding-music";
         }
 
-        if (wakeSate === "asleep") {
-            return "sleep";
+        if (activity.type === "game") {
+            return "tippy-taps";
         }
-        if (wakeSate === "morning") {
-            return "groggy";
+
+        if (activity.type === "software" || activity.type === "programming" || activity.type === "art") {
+            return "sit-ponder";
         }
-        if (wakeSate === "evening") {
-            return "eepy";
+
+        if (activity.type === "music-production") {
+            return "making-music";
         }
 
         return "sit";
+    });
+
+    let activeSince = $derived.by(() => {
+        if (!activity || !activity.activeSince) return null;
+        if (updateTime <= 0) return null; // Trigger Svelte to re-run every update
+
+        let ms = Math.max(0, updateTime - activity.activeSince);
+
+        let secs = Math.floor(ms / 1000);
+        let mins = Math.floor(secs / 60);
+        let hours = Math.floor(mins / 60);
+        let days = Math.floor(hours / 24);
+
+        if (mins < 1) {
+            return `${secs}s`;
+        }
+        if (hours < 1) {
+            return `${mins % 60}m ${(secs % 60).toString().padStart(2, "0")}s`;
+        }
+        if (days < 1) {
+            return `${hours}hr ${(mins % 60).toString().padStart(2, "0")}m`;
+        }
+        if (days < 7) {
+            return `${days}d ${(hours % 24).toString().padStart(2, "0")}hr`;
+        }
+        return "For an eternity";
     });
 
     onMount(() => {
@@ -257,6 +335,29 @@
                     </div>
                 </div>
             {/if}
+            {#if (activity.type === "software" || activity.type === "programming" || activity.type === "art" || activity.type === "music-production") && activity.software}
+                <div class="software-info">
+                    {#if activity.software.cover}
+                        <img src={activity.software.cover} alt="" class="software-cover" />
+                    {:else}
+                        <img src="/images/default-software-cover.png" alt="" class="software-cover" />
+                    {/if}
+                    <div class="software-details">
+                        <span class="software-name">
+                            {#if activity.software?.url}
+                                <a href={activity.software.url} target="_blank" rel="noopener noreferrer">
+                                    {activity.software.name}
+                                </a>
+                            {:else}
+                                {activity.software.name}
+                            {/if}
+                        </span>
+                        {#if activeSince}
+                            <span class="active-since">{activeSince}</span>
+                        {/if}
+                    </div>
+                </div>
+            {/if}
         {:else}
             <div class="offline-info">
                 I'm offline right now. Check back later when I'm doing something more interesting!
@@ -275,6 +376,13 @@
         grid-template-areas: "details pony";
 
         gap: 1rem;
+    }
+
+    a[href] {
+        &:focus-visible,
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .details {
@@ -380,6 +488,33 @@
 
                 background-color: hsl(213, 83%, 57%);
             }
+        }
+    }
+
+    .software-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 0.75rem;
+
+        .software-cover {
+            width: 5rem;
+
+            border-radius: 0.25rem;
+        }
+
+        .software-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .software-name {
+            font-weight: var(--font-bold);
+        }
+
+        .active-since {
+            margin-top: 0.25rem;
         }
     }
 

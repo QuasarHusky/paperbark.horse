@@ -52,6 +52,22 @@
             src: "/images/activity/finding-music-sleepy.gif",
             width: 42,
         },
+        "sit-ponder": {
+            src: "/images/activity/sit-ponder.gif",
+            width: 42,
+        },
+        "sit-think": {
+            src: "/images/activity/sit-think.gif",
+            width: 42,
+        },
+        "tippy-taps": {
+            src: "/images/activity/tippy-taps.gif",
+            width: 44,
+        },
+        "making-music": {
+            src: "/images/activity/making-music.gif",
+            width: 44,
+        },
     } as const;
 
     const sitStateSrcs = [
