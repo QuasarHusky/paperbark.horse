@@ -5,9 +5,10 @@ interface Props {
     el: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     title: string;
     id?: string;
+    spacing?: boolean;
 }
 
-let { el, title, id = undefined } = Astro.props;
+let { el, title, id = undefined, spacing = true } = Astro.props;
 
 let Element = el;
 
@@ -16,7 +17,7 @@ if (id === undefined) {
 }
 ---
 
-<div class="paper-title" id={id}>
+<div class:list={["paper-title", { spacing }]} id={id}>
     <Element>{title}</Element>
 </div>
 
@@ -28,7 +29,6 @@ if (id === undefined) {
         align-self: flex-start;
 
         margin-left: calc(var(--paper-edge-width) * -1 - 1.2rem);
-        margin-bottom: 1rem;
         padding-left: calc(var(--paper-edge-width) + 1.2rem);
         padding-right: calc(var(--paper-title-size) + 1rem);
         padding-block: 0.5rem;
@@ -44,5 +44,9 @@ if (id === undefined) {
         clip-path: polygon(0 0, 100% 0, calc(100% - var(--paper-title-size)) 50%, 100% 100%, 0 100%);
 
         scroll-margin-top: 2rem;
+
+        &.spacing {
+            margin-bottom: 1rem;
+        }
     }
 </style>

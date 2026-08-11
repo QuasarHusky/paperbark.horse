@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import ArrowButton from "./buttons/ArrowButton.astro";
 import Content from "./text/Content.astro";
 import type { CollectionEntry } from "astro:content";
+import Reactions from "./Reactions.astro";
 
 interface Props {
     post: CollectionEntry<"post">;
@@ -36,11 +37,9 @@ let allTags = await getCollection("tag");
             }
         </time>
         {
-            post.data.tags && (
-                <div class="tags">
-                    {post.data.tags.map((tag: string) => (
-                        <div class="tag">{allTags.find((t) => t.id === tag)?.data.name ?? tag}</div>
-                    ))}
+            post.data.reactions && (
+                <div class="reactions">
+                    <Reactions {...post.data.reactions} />
                 </div>
             )
         }
@@ -137,6 +136,13 @@ let allTags = await getCollection("tag");
 
                 user-select: none;
             }
+        }
+
+        .reactions {
+            display: flex;
+            flex-direction: column;
+
+            margin-top: 0.25rem;
         }
 
         .picture {

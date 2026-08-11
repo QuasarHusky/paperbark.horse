@@ -31,6 +31,19 @@ const post = defineCollection({
 
         url: z.string().optional(),
         action: z.string().optional(),
+
+        reactions: z
+            .discriminatedUnion("type", [
+                z.object({
+                    type: z.literal("auto"),
+                    name: z.string(),
+                }),
+                z.object({
+                    type: z.literal("manual"),
+                    iid: z.string(),
+                }),
+            ])
+            .optional(),
     }),
 });
 

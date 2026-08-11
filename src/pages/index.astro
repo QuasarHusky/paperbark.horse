@@ -14,6 +14,7 @@ import PostCard from "$components/elements/PostCard.astro";
 import PolaroidGrid from "$components/layouts/polaroid-grid/PolaroidGrid.astro";
 import PolaroidGridItem from "$components/layouts/polaroid-grid/PolaroidGridItem.astro";
 import ActivitySection from "$components/site/activity/ActivitySection.astro";
+import Reactions from "$components/elements/Reactions.astro";
 
 let posts = (await getCollection("post"))
     .filter((post) => post.data.showcase && !post.data.unlisted)
@@ -88,6 +89,9 @@ const buttonSnippet = `<a href="https://paperbark.horse" target="_blank" rel="no
                     >
                     or <Hyperlink href="/socials">find me on my other socials</Hyperlink>!
                 </p>
+                <div class="reactions">
+                    <Reactions type="manual" iid="4354" />
+                </div>
             </Content>
         </Paper>
         <ActivitySection />

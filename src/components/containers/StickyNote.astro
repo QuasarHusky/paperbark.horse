@@ -8,38 +8,42 @@ const { padding = true, color = "yellow" } = Astro.props;
 ---
 
 <div class:list={["sticky-note", "theme-sticky-note", `sticky-note-color-${color}`, { padding }]}>
-    <div class="sticky-note-inner">
+    <div class="sticky-note-background"></div>
+    <div class="sticky-note-content">
         <slot />
     </div>
 </div>
 
 <style lang="scss">
     .sticky-note {
+        position: relative;
+
         filter: var(--filter-shadow-medium);
 
-        &.padding .sticky-note-inner {
+        &.padding .sticky-note-content {
             padding: 1rem 1.5rem;
         }
 
-        &.sticky-note-color-yellow .sticky-note-inner {
+        &.sticky-note-color-yellow .sticky-note-background {
             background-image: var(--sticky-note-yellow-gradient);
         }
 
-        &.sticky-note-color-green .sticky-note-inner {
+        &.sticky-note-color-green .sticky-note-background {
             background-image: var(--sticky-note-green-gradient);
         }
 
-        &.sticky-note-color-white .sticky-note-inner {
+        &.sticky-note-color-white .sticky-note-background {
             background-image: var(--sticky-note-white-gradient);
         }
 
-        &.sticky-note-color-blue .sticky-note-inner {
+        &.sticky-note-color-blue .sticky-note-background {
             background-image: var(--sticky-note-blue-gradient);
         }
     }
 
-    .sticky-note-inner {
-        position: relative;
+    .sticky-note-background {
+        position: absolute;
+        inset: 0;
 
         border-radius: var(--sticky-note-corner-radius);
 
@@ -52,6 +56,7 @@ const { padding = true, color = "yellow" } = Astro.props;
             calc(100% - var(--sticky-note-fold-size)) 100%,
             0 100%
         );
+        z-index: -1;
 
         &::after {
             content: "";

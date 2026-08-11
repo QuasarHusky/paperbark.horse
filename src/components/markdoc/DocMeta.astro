@@ -1,4 +1,5 @@
 ---
+import Reactions from "$components/elements/Reactions.astro";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -8,6 +9,13 @@ interface Props {
 let { post } = Astro.props;
 ---
 
+{
+    post.data.reactions && (
+        <div class="reactions">
+            <Reactions {...post.data.reactions} />
+        </div>
+    )
+}
 <div class="post-meta">
     <span class="published">
         Published
@@ -45,5 +53,12 @@ let { post } = Astro.props;
         flex-direction: column;
 
         font-style: italic;
+    }
+
+    .reactions {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: 0.75rem;
     }
 </style>

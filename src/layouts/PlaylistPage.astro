@@ -6,7 +6,9 @@ import Date from "$components/elements/text/Date.astro";
 import PaperTitle from "$components/elements/text/PaperTitle.astro";
 import NavItem from "$components/navigation/NavItem.astro";
 import NavSection from "$components/navigation/NavSection.astro";
+import type { ComponentProps } from "astro/types";
 import ContentPage from "./ContentPage.astro";
+import Reactions from "$components/elements/Reactions.astro";
 
 type Playlist = {
     name: string;
@@ -40,9 +42,10 @@ type PlaylistTrack = {
 
 interface Props {
     playlist: Playlist;
+    reactions?: ComponentProps<typeof Reactions>;
 }
 
-const { playlist } = Astro.props;
+const { playlist, reactions } = Astro.props;
 
 function formatDuration(time: number) {
     let mins = Math.floor(time / 60) % 60;
@@ -168,6 +171,13 @@ let duration = formatDuration(totalDuration);
                                 )
                             }
                         </div>
+                        {
+                            reactions && (
+                                <div class="reactions">
+                                    <Reactions {...reactions} />
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
                 {Astro.slots["playlist-description"] && <slot name="playlist-description" />}
@@ -234,6 +244,11 @@ let duration = formatDuration(totalDuration);
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+        }
+
+        .reactions {
+            display: flex;
+            flex-direction: column;
         }
 
         @container (width < 570px) {

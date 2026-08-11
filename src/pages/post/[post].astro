@@ -5,6 +5,9 @@ import NavSection from "$components/navigation/NavSection.astro";
 import ContentPage from "$layouts/ContentPage.astro";
 import { render } from "astro:content";
 import { getCollection } from "astro:content";
+import Reactions from "$components/elements/Reactions.astro";
+import StickyNote from "$components/containers/StickyNote.astro";
+import Content from "$components/elements/text/Content.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
     let posts = await getCollection("post");
@@ -22,7 +25,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
-const { Content, headings } = await render(post);
+const { Content: PostContent, headings } = await render(post);
 
 if (post.data.url) {
     return Astro.redirect(post.data.url);
@@ -59,6 +62,41 @@ if (post.data.url) {
     </Fragment>
 
     <Fragment slot="main">
-        <Content post={post} />
+        <PostContent post={post} />
+
+        {
+            post.data.reactions && (
+                <div class="reactions-container">
+                    <StickyNote color="yellow">
+                        <Content>
+                            <div class="reactions">
+                                <Reactions
+                                    settings={{ theme: "outline", theme_color: "rgb(0, 0, 0)" }}
+                                    {...post.data.reactions}
+                                />
+                            </div>
+                        </Content>
+                    </StickyNote>
+                </div>
+            )
+        }
     </Fragment>
 </ContentPage>
+
+<style lang="scss">
+    .reactions-container {
+        min-width: 10rem;
+        max-width: 18.5rem;
+        align-self: center;
+
+        text-align: center;
+    }
+
+    .reactions {
+        --content-gap: 0.25rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>

@@ -1,0 +1,32 @@
+---
+import { undefined } from "astro:schema";
+
+type Props = {
+    settings?: any;
+} & (
+    | {
+          type: "manual";
+          iid: string;
+      }
+    | {
+          type: "auto";
+          name: string;
+      }
+);
+
+const props = Astro.props;
+
+let settingsVal;
+
+if (props.settings) {
+    settingsVal = encodeURIComponent(JSON.stringify(props.settings));
+}
+---
+
+{
+    props.type === "manual" ? (
+        <ws-widget type="reactions" iid={props.iid} settings={settingsVal} />
+    ) : (
+        <ws-widget type="reactions" name={props.name} settings={settingsVal} wid="11" auto />
+    )
+}

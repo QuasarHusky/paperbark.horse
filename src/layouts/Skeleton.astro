@@ -20,6 +20,8 @@ let { title, bodyClass } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         {title ? <title>{title} - Paperbark</title> : <title>Paperbark</title>}
 
+        <script src="https://u.widget.st/ar.js" is:inline></script>
+
         <slot name="head" />
     </head>
     <body class={bodyClass}>

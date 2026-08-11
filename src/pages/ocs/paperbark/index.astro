@@ -35,7 +35,11 @@ import StickyNote from "$components/containers/StickyNote.astro";
     </Fragment>
 
     <Fragment slot="main">
-        <CharacterSummary name="Paperbark" image="/images/ocs/paperbark/profile.jpg">
+        <CharacterSummary
+            name="Paperbark"
+            image="/images/ocs/paperbark/profile.jpg"
+            reactions={{ type: "auto", name: "ocs/paperbark" }}
+        >
             <Fragment slot="info">
                 <Infobox>
                     <InfoboxField label="Created">
