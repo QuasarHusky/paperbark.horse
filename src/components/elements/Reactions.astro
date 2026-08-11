@@ -27,6 +27,13 @@ if (props.settings) {
     props.type === "manual" ? (
         <ws-widget type="reactions" iid={props.iid} settings={settingsVal} />
     ) : (
-        <ws-widget type="reactions" name={props.name} settings={settingsVal} wid="11" auto />
+        <ws-widget
+            type="reactions"
+            name={props.name}
+            settings={settingsVal}
+            wid="11"
+            predefine="Paperbark"
+            auto
+        />
     )
 }
