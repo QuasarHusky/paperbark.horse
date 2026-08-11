@@ -1,18 +1,8 @@
 ---
-import { undefined } from "astro:schema";
-
-type Props = {
+interface Props {
     settings?: any;
-} & (
-    | {
-          type: "manual";
-          iid: string;
-      }
-    | {
-          type: "auto";
-          name: string;
-      }
-);
+    iid: string;
+}
 
 const props = Astro.props;
 
@@ -23,17 +13,4 @@ if (props.settings) {
 }
 ---
 
-{
-    props.type === "manual" ? (
-        <ws-widget type="reactions" iid={props.iid} settings={settingsVal} />
-    ) : (
-        <ws-widget
-            type="reactions"
-            name={props.name}
-            settings={settingsVal}
-            wid="11"
-            predefine="Paperbark"
-            auto
-        />
-    )
-}
+<ws-widget type="reactions" iid={props.iid} settings={settingsVal}></ws-widget>
