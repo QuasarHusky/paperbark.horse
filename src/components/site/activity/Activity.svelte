@@ -290,7 +290,7 @@
                                 </span>
                             {/if}
                             {#if activity.track?.album && activity.track?.album !== activity.track?.title && activity.track?.album !== activity.track?.artist}
-                                {#if activity.track.albumArtist && activity.track.albumArtist !== activity.track.artist}
+                                {#if activity.track.albumArtist && activity.track.albumArtist !== activity.track.artist && activity.track.albumArtist !== activity.track.album}
                                     <span
                                         class="music-album"
                                         title={`${activity.track.albumArtist} - ${activity.track.album}`}
