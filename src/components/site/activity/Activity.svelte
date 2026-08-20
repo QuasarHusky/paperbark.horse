@@ -258,7 +258,7 @@
 
 <div class="activity">
     {#if kiaiTime}
-        <div class="kiai-effects" transition:fade={{ duration: 200 }}>
+        <div class="kiai-effects" transition:fade={{ duration: 1000 }}>
             <div
                 class="kiai-light"
                 style:--light-offset="-0s"
