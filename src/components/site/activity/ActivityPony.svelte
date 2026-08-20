@@ -150,6 +150,7 @@
         --pony-pixel-max-width: 48;
         --pony-pixel-max-height: 60;
 
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;

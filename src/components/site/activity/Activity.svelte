@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount, type ComponentProps } from "svelte";
     import ActivityPony from "./ActivityPony.svelte";
+    import { fade } from "svelte/transition";
 
     let activities: any = $state(null);
     let updateTime: number = $state(0);
@@ -141,7 +142,7 @@
         }
 
         if (activity.type === "music" || activity.type === "radio") {
-            if (activity.metadata?.["music.high-volume"] === true) {
+            if (activity.metadata?.["site.activity.hype"] === true) {
                 let move = Math.floor(updateTime / 10000) % 2;
 
                 switch (move) {
@@ -220,6 +221,13 @@
         return 1 / (activity.metadata["site.activity.heart-bpm"] / 60);
     });
 
+    let kiaiTime = $derived.by(() => {
+        return (
+            activity?.metadata?.["site.activity.kiai"] === true &&
+            activity?.metadata?.["site.activity.ignore-kiai"] !== true
+        );
+    });
+
     onMount(() => {
         let eventSource = new EventSource("https://api.paperbark.horse/activity/current/live");
 
@@ -249,6 +257,34 @@
 </script>
 
 <div class="activity">
+    {#if kiaiTime}
+        <div class="kiai-effects" transition:fade={{ duration: 200 }}>
+            <div
+                class="kiai-light"
+                style:--light-offset="-0s"
+                style:--light-fade-offset="-0s"
+                style:--light-color="hsl(5deg, 100%, 50%)"
+            >
+                <div class="kiai-light-beam"></div>
+            </div>
+            <div
+                class="kiai-light"
+                style:--light-offset="-1s"
+                style:--light-fade-offset="-1s"
+                style:--light-color="hsl(130deg, 100%, 50%)"
+            >
+                <div class="kiai-light-beam"></div>
+            </div>
+            <div
+                class="kiai-light"
+                style:--light-offset="-2s"
+                style:--light-fade-offset="-2s"
+                style:--light-color="hsl(220deg, 100%, 50%)"
+            >
+                <div class="kiai-light-beam"></div>
+            </div>
+        </div>
+    {/if}
     <div class="details">
         <div class="detail-header">
             <h2 class="title">Paperbark is currently...</h2>
@@ -637,6 +673,7 @@
         .activity-pony {
             max-width: min(10rem, 60cqw);
             justify-self: center;
+            z-index: 1;
         }
     }
 
@@ -660,6 +697,69 @@
         100% {
             opacity: 0;
             transform: translate(50%, 50%) scale(2.2);
+        }
+    }
+
+    .kiai-effects {
+        position: absolute;
+        inset: 0;
+
+        border-radius: 0.25rem;
+
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .kiai-light {
+        mix-blend-mode: hard-light;
+
+        animation-name: kiai-light;
+        animation-duration: 3.5s;
+        animation-delay: var(--light-fade-offset);
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
+    }
+
+    .kiai-light-beam {
+        position: absolute;
+        top: -3rem;
+        right: -1rem;
+        height: 22rem;
+        aspect-ratio: 1 / 4;
+
+        background: linear-gradient(180deg, var(--light-color), transparent);
+        opacity: 0.6;
+
+        transform: translate(50%, -50%) rotate(45deg) translate(0, 50%);
+        clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+        pointer-events: none;
+
+        animation-name: kiai-light-beam;
+        animation-duration: 1.65s;
+        animation-delay: var(--light-offset);
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: both;
+    }
+
+    @keyframes kiai-light {
+        45% {
+            opacity: 0;
+        }
+        55% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes kiai-light-beam {
+        0% {
+            transform: translate(50%, -50%) rotate(15deg) translate(0, 50%);
+        }
+        100% {
+            transform: translate(50%, -50%) rotate(60deg) translate(0, 50%);
         }
     }
 </style>
