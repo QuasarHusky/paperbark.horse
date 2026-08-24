@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount, type ComponentProps } from "svelte";
     import ActivityPony from "./ActivityPony.svelte";
-    import { fade } from "svelte/transition";
+    import { fade, fly, scale } from "svelte/transition";
 
     let activities: any = $state(null);
     let updateTime: number = $state(0);
@@ -137,6 +137,21 @@
             return "sit";
         }
 
+        if (kiaiTime) {
+            for (let action of activeTimedActions) {
+                if (action.type === "animation") return action.animation;
+                if (action.type === "shout") {
+                    if (action.animation === null) {
+                        continue;
+                    }
+                    if (action.animation) {
+                        return action.animation;
+                    }
+                    return "dance-5-shout";
+                }
+            }
+        }
+
         if (activity.metadata?.["site.activity.pony-animation"]) {
             return activity.metadata["site.activity.pony-animation"];
         }
@@ -234,6 +249,26 @@
         );
     });
 
+    let activeTimedActions = $derived.by(() => {
+        if (!musicProgress) return [];
+        if (!activity?.metadata?.["site.activity.timed-actions"]) return [];
+
+        let allActions: any[] = activity.metadata["site.activity.timed-actions"];
+
+        return allActions.filter(
+            (action) => musicProgress.current >= action.start && musicProgress.current < action.end,
+        );
+    });
+
+    let shoutText = $derived.by(() => {
+        if (!kiaiTime) return null;
+
+        return (
+            activeTimedActions.filter((action) => action.type === "shout").map((action) => action.text)[0] ??
+            null
+        );
+    });
+
     onMount(() => {
         let eventSource = new EventSource("https://api.paperbark.horse/activity/current/live");
 
@@ -294,7 +329,18 @@
     <div class="details">
         <div class="detail-header">
             <h2 class="title">Paperbark is currently...</h2>
-            <span class="activity-name">{activityName}</span>
+            <span class="activity-name">
+                {activityName}
+                {#if activity?.metadata?.["site.activity.timed-actions"] && kiaiTime}
+                    <img
+                        class="enhanced-icon"
+                        src="/assets/icons/enhanced.svg"
+                        alt=""
+                        title="Paperbark will react to this song! They'll sync up to exactly what I'm listening to and they might dance or shout out lyrics as I'm hearing them."
+                        transition:fly={{ duration: 500, x: 20 }}
+                    />
+                {/if}
+            </span>
         </div>
         {#if activity}
             {#if activity.type === "music" && activity.track}
@@ -449,6 +495,13 @@
         {/if}
     </div>
     <div class="activity-pony">
+        {#if shoutText}
+            {#key shoutText}
+                <div class="shout-container" transition:fly|global={{ duration: 500, y: 10, opacity: 0 }}>
+                    {shoutText}
+                </div>
+            {/key}
+        {/if}
         <ActivityPony {animation} />
     </div>
 </div>
@@ -619,7 +672,13 @@
     }
 
     .activity-pony {
+        position: relative;
         grid-area: pony;
+    }
+
+    .enhanced-icon {
+        display: inline;
+        height: 0.7em;
     }
 
     .favourite-heart {
@@ -766,6 +825,55 @@
         }
         100% {
             transform: translate(50%, -50%) rotate(60deg) translate(0, 50%);
+        }
+    }
+
+    .shout-container {
+        position: absolute;
+        bottom: 65%;
+        left: -110%;
+        width: 12.5rem;
+        min-height: 2.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+
+        font-weight: var(--font-semibold);
+        font-size: 0.9rem;
+        text-align: center;
+
+        background-color: white;
+        filter: var(--filter-shadow-medium);
+        z-index: 50;
+        transform: rotate(3deg);
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 1rem;
+            height: 1rem;
+            background-color: white;
+
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform: translate(50%, 50%) rotate(-45deg);
+        }
+
+        @container (width < 550px) {
+            left: 50%;
+            bottom: 100%;
+            transform: translate(-50%, 0);
+
+            &::after {
+                right: 50%;
+                width: 2rem;
+                transform: translate(50%, 80%);
+            }
         }
     }
 </style>

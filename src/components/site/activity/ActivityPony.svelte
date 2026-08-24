@@ -20,6 +20,18 @@
             src: "/images/activity/dance-sit.gif",
             width: 43,
         },
+        "dance-sit-sad": {
+            src: "/images/activity/dance-sit-sad.gif",
+            width: 43,
+        },
+        "dance-sit-cry": {
+            src: "/images/activity/dance-sit-cry.gif",
+            width: 43,
+        },
+        "dance-sit-cry-happy": {
+            src: "/images/activity/dance-sit-cry-happy.gif",
+            width: 43,
+        },
         "dance-sit-2": {
             src: "/images/activity/dance-sit-2.gif",
             width: 44,
@@ -38,6 +50,18 @@
         },
         "dance-5-hype": {
             src: "/images/activity/dance-5-hype.gif",
+            width: 45,
+        },
+        "dance-5-shout": {
+            src: "/images/activity/dance-5-shout.gif",
+            width: 45,
+        },
+        "dance-5-cry": {
+            src: "/images/activity/dance-5-cry.gif",
+            width: 45,
+        },
+        "dance-5-shout-cry": {
+            src: "/images/activity/dance-5-shout-cry.gif",
             width: 45,
         },
         "dance-sleep": {
