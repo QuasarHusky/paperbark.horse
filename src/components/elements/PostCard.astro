@@ -19,7 +19,7 @@ let allTags = await getCollection("tag");
     <div class="picture">
         {
             post.data.image ? (
-                <img src={post.data.image} alt="" class="post-image" />
+                <img src={post.data.image.src} alt="" class="post-image" />
             ) : (
                 <img src="/images/post-default.png" alt="" class="post-image" />
             )
@@ -37,9 +37,11 @@ let allTags = await getCollection("tag");
             }
         </time>
         {
-            post.data.reactions && (
-                <div class="reactions">
-                    <Reactions {...post.data.reactions} />
+            post.data.tags && (
+                <div class="tags">
+                    {post.data.tags.map((tag: string) => (
+                        <div class="tag">{allTags.find((t) => t.id === tag)?.data.name ?? tag}</div>
+                    ))}
                 </div>
             )
         }

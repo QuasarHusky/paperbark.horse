@@ -15,25 +15,26 @@ const tagline = defineCollection({
 
 const post = defineCollection({
     loader: glob({ base: "./src/content/posts", pattern: "**/*.mdoc" }),
-    schema: z.object({
-        title: z.string(),
-        slug: z.string(),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            slug: z.string(),
 
-        published: z.coerce.date(),
-        updated: z.coerce.date().optional(),
+            published: z.coerce.date(),
+            updated: z.coerce.date().optional(),
 
-        tags: z.array(z.string()).default([]),
-        summary: z.array(z.string()).optional(),
-        image: z.string().optional(),
+            tags: z.array(z.string()).default([]),
+            summary: z.array(z.string()).optional(),
+            image: image(),
 
-        unlisted: z.boolean().default(false),
-        showcase: z.boolean().default(true),
+            unlisted: z.boolean().default(false),
+            showcase: z.boolean().default(true),
 
-        url: z.string().optional(),
-        action: z.string().optional(),
+            url: z.string().optional(),
+            action: z.string().optional(),
 
-        reactions: z.object({ iid: z.string() }).optional(),
-    }),
+            reactions: z.object({ iid: z.string() }).optional(),
+        }),
 });
 
 const tag = defineCollection({
