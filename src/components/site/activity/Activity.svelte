@@ -142,7 +142,13 @@
         }
 
         if (activity.type === "music" || activity.type === "radio") {
-            if (activity.metadata?.["site.activity.hype"] === true) {
+            if (
+                activity.metadata?.["site.activity.hype"] === true &&
+                activity.metadata?.["site.activity.ignore-hype"] !== true
+            ) {
+                if (activity.metadata?.["site.activity.pony-animation.hype"])
+                    return activity.metadata?.["site.activity.pony-animation.hype"];
+
                 let move = Math.floor(updateTime / 10000) % 2;
 
                 switch (move) {
@@ -153,7 +159,7 @@
                 }
             }
 
-            if (wakeSate === "asleep") {
+            if (wakeSate === "asleep" && activity.metadata?.["site.activity.hype"] !== true) {
                 return "dance-sleep";
             }
 
