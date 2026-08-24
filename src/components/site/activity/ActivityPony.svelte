@@ -32,6 +32,10 @@
             src: "/images/activity/dance-sit-cry-happy.gif",
             width: 43,
         },
+        "dance-sit-cry-ugly": {
+            src: "/images/activity/dance-sit-cry-ugly.gif",
+            width: 43,
+        },
         "dance-sit-2": {
             src: "/images/activity/dance-sit-2.gif",
             width: 44,
