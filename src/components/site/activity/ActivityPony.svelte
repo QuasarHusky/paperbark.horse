@@ -64,6 +64,10 @@
             src: "/images/activity/dance-5-shout-cry.gif",
             width: 45,
         },
+        "applause-hype": {
+            src: "/images/activity/applause-hype.gif",
+            width: 45,
+        },
         "dance-sleep": {
             src: "/images/activity/dance-sleep.gif",
             width: 49,

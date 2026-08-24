@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount, type ComponentProps } from "svelte";
     import ActivityPony from "./ActivityPony.svelte";
-    import { fade, fly, scale } from "svelte/transition";
+    import { fade, fly } from "svelte/transition";
 
     let activities: any = $state(null);
     let updateTime: number = $state(0);
@@ -137,7 +137,7 @@
             return "sit";
         }
 
-        if (kiaiTime) {
+        if (hasTimedActions && hypeMode) {
             for (let action of activeTimedActions) {
                 if (action.type === "animation") return action.animation;
                 if (action.type === "shout") {
@@ -157,10 +157,7 @@
         }
 
         if (activity.type === "music" || activity.type === "radio") {
-            if (
-                activity.metadata?.["site.activity.hype"] === true &&
-                activity.metadata?.["site.activity.ignore-hype"] !== true
-            ) {
+            if (hypeMode) {
                 if (activity.metadata?.["site.activity.pony-animation.hype"])
                     return activity.metadata?.["site.activity.pony-animation.hype"];
 
@@ -174,7 +171,7 @@
                 }
             }
 
-            if (wakeSate === "asleep" && activity.metadata?.["site.activity.hype"] !== true) {
+            if (wakeSate === "asleep" && !hypeMode) {
                 return "dance-sleep";
             }
 
@@ -242,9 +239,20 @@
         return 1 / (activity.metadata["site.activity.heart-bpm"] / 60);
     });
 
+    let hasTimedActions = $derived.by(() => {
+        return activity?.metadata?.["site.activity.timed-actions"] && musicProgress;
+    });
+
+    let hypeMode = $derived.by(() => {
+        return (
+            activity?.metadata?.["site.activity.hype"] === true &&
+            activity?.metadata?.["site.activity.ignore-hype"] !== true
+        );
+    });
+
     let kiaiTime = $derived.by(() => {
         return (
-            activity?.metadata?.["site.activity.kiai"] === true &&
+            (activity?.metadata?.["site.activity.kiai"] === true || (hasTimedActions && hypeMode)) &&
             activity?.metadata?.["site.activity.ignore-kiai"] !== true
         );
     });
@@ -260,8 +268,22 @@
         );
     });
 
+    let enhancedIconActive = $derived.by(() => {
+        if (!musicProgress) return false;
+        if (!activity?.metadata?.["site.activity.timed-actions"]) return false;
+
+        let allActions: any[] = activity.metadata["site.activity.timed-actions"];
+
+        return allActions.find(
+            (action) =>
+                musicProgress.current >= action.start - 3000 && musicProgress.current < action.end + 1000,
+        )
+            ? true
+            : false;
+    });
+
     let shoutText = $derived.by(() => {
-        if (!kiaiTime) return null;
+        if (!hypeMode) return null;
 
         return (
             activeTimedActions.filter((action) => action.type === "shout").map((action) => action.text)[0] ??
@@ -331,13 +353,12 @@
             <h2 class="title">Paperbark is currently...</h2>
             <span class="activity-name">
                 {activityName}
-                {#if activity?.metadata?.["site.activity.timed-actions"] && kiaiTime}
+                {#if hasTimedActions && hypeMode}
                     <img
-                        class="enhanced-icon"
+                        class={["enhanced-icon", { active: enhancedIconActive }]}
                         src="/assets/icons/enhanced.svg"
                         alt=""
                         title="Paperbark will react to this song! They'll sync up to exactly what I'm listening to and they might dance or shout out lyrics as I'm hearing them."
-                        transition:fly={{ duration: 500, x: 20 }}
                     />
                 {/if}
             </span>
@@ -679,6 +700,15 @@
     .enhanced-icon {
         display: inline;
         height: 0.7em;
+
+        filter: grayscale(0%);
+        opacity: 1;
+        transition: 0.2s;
+
+        &:not(.active) {
+            filter: grayscale(100%);
+            opacity: 0.5;
+        }
     }
 
     .favourite-heart {
