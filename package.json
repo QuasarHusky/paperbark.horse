@@ -12,16 +12,16 @@
         "astro": "astro"
     },
     "dependencies": {
-        "@astrojs/markdoc": "^2.0.6",
+        "@astrojs/markdoc": "^2.0.9",
         "@astrojs/rss": "^4.0.19",
         "@astrojs/svelte": "^9.0.1",
-        "astro": "^7.2.1",
+        "astro": "^7.3.1",
         "github-slugger": "^2.0.0",
-        "svelte": "^5.55.2",
+        "svelte": "^5.57.0",
         "typescript": "^5.9.3"
     },
     "devDependencies": {
-        "sass-embedded": "^1.99.0",
-        "sharp": "^0.35.3"
+        "sass-embedded": "^1.104.0",
+        "sharp": "^0.35.4"
     }
 }
